@@ -12,17 +12,10 @@ then
 fi
 echo "________________________________________________________"
 echo "________________________________________________________"
-echo "CodeChecker process.c"
-if /home/george/CodeChecker/CodeChecker/CodeChecker.exe process.c
+echo "CodeChecker functions.c"
+if /home/george/CodeChecker/CodeChecker/CodeChecker.exe functions.c
 then
     echo "process.c - OK"
-fi
-echo "________________________________________________________"
-echo "________________________________________________________"
-echo "CodeChecker input_output.c"
-if /home/george/CodeChecker/CodeChecker/CodeChecker.exe input_output.c
-then
-    echo "input_output.c - OK"
 fi
 echo "________________________________________________________"
 echo "________________________________________________________"
@@ -46,7 +39,7 @@ if [ $VERBOSE = true ]; then
     ./sanitize_check.sh -v
     echo "________________________________________________________"
     echo "________________________________________________________"
-    echo "Covergae"
+    echo "Coverage"
     ./collect_coverage.sh -v
     echo "________________________________________________________"
     echo "________________________________________________________"
@@ -55,7 +48,7 @@ else
     ./sanitize_check.sh
     echo "________________________________________________________"
     echo "________________________________________________________"
-    echo "Covergae"
+    echo "Coverage"
     ./collect_coverage.sh
     echo "________________________________________________________"
     echo "________________________________________________________"
