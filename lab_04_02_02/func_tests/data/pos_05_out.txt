@@ -1,0 +1,3 @@
+Result: yyy no
+ooo yes
+ttt no
