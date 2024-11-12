@@ -1,5 +1,5 @@
 #!/bin/bash
-if [ $# != 2 ]; then
+if [ $# != 3 ]; then
 	echo Error pos_case
 	exit 1
 fi
@@ -13,6 +13,11 @@ start_file="./app.exe"
 "$start_file" < func_tests/scripts/in.txt > func_tests/scripts/out_res.txt
 
 saver_code=$?
+
+if [ $3 = true ]; then
+	valgrind -q --leak-check=full "$start_file" < func_tests/scripts/in.txt
+fi
+
 if [ $saver_code -ne 0 ]; then
 	exit 1
 fi

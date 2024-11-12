@@ -8,6 +8,11 @@ if [ "$1" = "-v" ]; then
 else
   VERBOSE=false
 fi
+if [ "$1" = "-va" ]; then
+  VA=true
+else
+  VA=false
+fi
 cnt_complete_pos=0
 cnt_all_pos=0
 ls "$to_source/../data" > save_all.txt
@@ -24,7 +29,7 @@ then
       then
         data_in="../data/pos_0${i}_in.txt"
         data_out=$(cat "../data/pos_0${i}_out.txt")
-        bash pos_case.sh "$data_in" "$data_out"
+        bash pos_case.sh "$data_in" "$data_out" "$VA"
         if [ $? -eq 1 ]; then
           if [ "$VERBOSE" = true ]; then
             echo "pos_0$i - ERROR"
@@ -39,7 +44,7 @@ then
       else
         data_in="../data/pos_${i}_in.txt"
         data_out=$(cat "../data/pos_${i}_out.txt")
-        bash pos_case.sh "$data_in" "$data_out"
+        bash pos_case.sh "$data_in" "$data_out" "$VA"
         if [ $? -eq 1 ]; then
           if [ "$VERBOSE" = true ]; then 
             echo "pos_$i - ERROR"
@@ -70,7 +75,7 @@ then
       if [ "$i" -lt 10 ];
       then
         data_in=$(cat "../data/neg_0${i}_in.txt")
-        bash neg_case.sh "$data_in"
+        bash neg_case.sh "$data_in" "$VA"
         if [ $? -eq 1 ]; then
           if [ "$VERBOSE" = true ]; then
             echo "neg_0$i - ERROR"
@@ -84,7 +89,7 @@ then
         fi
       else
           data_in=$(cat "../data/neg_${i}_in.txt")
-          bash neg_case.sh "$data_in"
+          bash neg_case.sh "$data_in" "$VA"
         if [ $? -eq 1 ]; then
           if [ "$VERBOSE" = true ]; then
             echo "neg_$i - ERROR"
