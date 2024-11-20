@@ -1,0 +1,11 @@
+#ifndef ERRORS_H__
+
+#define ERRORS_H__
+
+#define OK 0
+#define ERROR 1
+#define ERROR_OPEN_FILE 100
+#define ERROR_LEN_FILE 101
+#define ERROR_ARGUMENTS 102
+
+#endif
