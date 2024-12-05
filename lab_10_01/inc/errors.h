@@ -7,5 +7,7 @@
 #define ERROR_OPEN_FILE 100
 #define ERROR_LEN_FILE 101
 #define ERROR_ARGUMENTS 102
+#define ERROR_READ_PRICE 103
+#define ERROR_ADD_MEMORY 104
 
 #endif
