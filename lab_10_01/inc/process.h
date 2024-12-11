@@ -13,7 +13,7 @@ void product_free(node_t *head);
 void free_all_data(node_t *head);
 void *pop_end(node_t **head);
 int comparator_products (const void *compare_1, const void *compare_2);
-void remove_duplicates(node_t **head, int (*copmarator)(const void*, const void*));
+void remove_duplicates(node_t **head, int (*comparator)(const void*, const void*));
 int comparator_prices(const void *price_1, const void *price_2);
 node_t* sort(node_t *head, int (*comparator)(const void *, const void *));
 void sorted_insert(node_t **head, node_t *element, int (*comparator)(const void *, const void *));

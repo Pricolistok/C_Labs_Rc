@@ -1,0 +1,14 @@
+potato
+5
+cherry
+80
+apple
+100
+orange
+100
+pear
+110
+banana
+111
+tomato
+111

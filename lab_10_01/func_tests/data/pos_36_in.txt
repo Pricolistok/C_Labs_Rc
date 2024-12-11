@@ -1,0 +1,10 @@
+potato
+55
+apple
+11
+pear
+47
+tomato
+14
+orange
+9

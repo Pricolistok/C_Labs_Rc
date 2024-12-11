@@ -1,0 +1,6 @@
+apple
+11
+pear
+14
+tomato
+15

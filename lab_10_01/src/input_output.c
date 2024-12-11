@@ -19,6 +19,10 @@ int check_choice_menu(char **argv) {
         return MODE_SORT;
     else if (strcmp(argv[3], "SORT_POP_FRONT_END") == 0)
         return MODE_SORT_POP_FRONT_END;
+    else if (strcmp(argv[3], "POP_DUPL") == 0)
+        return MODE_POP_DUPLICATES;
+    else if (strcmp(argv[3], "POP_SORT_DUPL") == 0)
+        return MODE_POP_DUPLICATES_SORT;
     return ERROR_CHOICE_MENU;
 }
 
@@ -73,6 +77,8 @@ int read_from_file(FILE *file, node_t **head)
         saver_pos = ftell(file);
         while ((ch = fgetc(file)) != '\n' && ch != EOF)
             len_name++;
+        if (len_name == 0)
+            return ERROR_LEN_NAME;
         name = malloc(len_name + 1);
         if (!name)
             return ERROR_ADD_MEMORY;
@@ -84,6 +90,8 @@ int read_from_file(FILE *file, node_t **head)
         rc = fscanf(file, "%d", &price);
         if (rc != 1)
             return ERROR_READ_PRICE;
+        if (price <= 0)
+            return ERROR_PRICE;
         fgetc(file);
 
         elem = create_elem(name, price, len_name);

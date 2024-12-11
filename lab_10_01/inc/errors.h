@@ -11,5 +11,7 @@
 #define ERROR_READ_PRICE 304
 #define ERROR_ADD_MEMORY 305
 #define ERROR_CHOICE_MENU 306
+#define ERROR_PRICE 307
+#define ERROR_LEN_NAME 308
 
 #endif

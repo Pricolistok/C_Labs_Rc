@@ -2,8 +2,8 @@
 
 void *pop_front(node_t **head) {
     void *saver_point = *head;
-    if (*head == NULL || (*head)->next == NULL)
-        return saver_point;
+    if (*head == NULL)
+        return NULL;
     *head = (*head)->next;
     product_free(saver_point);
     return saver_point;
@@ -72,39 +72,73 @@ int comparator_products (const void *compare_1, const void *compare_2) {
 }
 
 
-void remove_duplicates(node_t **head, int (*copmarator)(const void*, const void*)) {
-    node_t *next = NULL, *next_tmp, *save_head = *head, *cursor = *head;
-    node_t *tmp = NULL, **saver_point = NULL;
-    tmp = *head;
-    saver_point = head;
-    tmp = tmp->next;
-    if (*head == NULL)
-        return;
-    for ( ; *head; *head = next) {
-        if ((*head)->next != NULL) {
-            for ( ; tmp; tmp = next_tmp) {
-                printf("1\n");
-                printf("cmp %p %p\n", (void*)(*head), (void*)(*head)->next);
-                if (copmarator((*head)->data, tmp->data) == ERROR) {
-                    *saver_point = cursor;
-                    if (tmp->next != NULL)
-                        (*saver_point)->next = tmp->next;
-                    else
-                        (*saver_point)->next = NULL;
+// void remove_duplicates(node_t **head, int (*copmarator)(const void*, const void*)) {
+//     node_t *saver_head = *head;
+//     node_t *next = NULL, *next_tmp, *save_head = *head, *cursor = *head;
+//     node_t *tmp = NULL, **saver_point = NULL;
+//     tmp = *head;
+//     saver_point = head;
+//     if (*head == NULL)
+//         return;
+//     for ( ; *head; *head = next) {
+//         printf("P");
+//         tmp = saver_head;
+//         if ((*head)->next != NULL) {
+//             for ( ; tmp; tmp = next_tmp) {
+//                 if (tmp != *head) {
+//                     if (copmarator((*head)->data, tmp->data) == ERROR) {
+//                         *saver_point = cursor;
+//                         if (tmp->next != NULL)
+//                             (*saver_point)->next = tmp->next;
+//                         else
+//                             (*saver_point)->next = NULL;
+//                         next_tmp = tmp->next;
+//                         product_free(tmp);
+//                     }
+//                     else {
+//                         cursor = tmp;
+//                         next_tmp = tmp->next;
+//                     }
+//                 }
+//                 else {
+//                     cursor = tmp;
+//                     next_tmp = tmp->next;
+//                 }
+//             }
+//         }
+//         if ((*head)->next == NULL)
+//             break;
+//         next = (*head)->next;
+//     }
+//     *head = save_head;
+// }
+
+void remove_duplicates(node_t **head, int (*comparator)(const void*, const void*)) {
+    node_t *saver_head = *head;
+    node_t *next_head = NULL, *next_tmp = NULL;
+    node_t *tmp = *head, *saver_tmp = *head;
+    for ( ; *head; *head = next_head) {
+        tmp = *head;
+        for ( ; tmp; tmp = next_tmp) {
+            if (tmp == *head) {
+                saver_tmp = tmp;
+                next_tmp = tmp->next;
+            }
+            else {
+                if (comparator(tmp->data, (*head)->data) == ERROR) {
+                    saver_tmp->next = tmp->next;
                     next_tmp = tmp->next;
                     product_free(tmp);
                 }
                 else {
-                    cursor = tmp;
+                    saver_tmp = tmp;
                     next_tmp = tmp->next;
                 }
             }
         }
-        if ((*head)->next == NULL)
-            break;
-        next = (*head)->next;
+        next_head = (*head)->next;
     }
-    *head = save_head;
+    *head = saver_head;
 }
 
 int comparator_prices(const void *price_1, const void *price_2) {
@@ -121,7 +155,7 @@ int comparator_prices(const void *price_1, const void *price_2) {
 
 void sorted_insert(node_t **head, node_t *element, int (*comparator)(const void *, const void *)) {
     node_t *tmp  = *head;
-    while (tmp->next && comparator(tmp->next->data, element->data) == -1)
+    while (tmp->next && comparator(tmp->next->data, element->data) <= 0)
         tmp = tmp->next;
     element->next = tmp->next;
     tmp->next = element;

@@ -44,6 +44,18 @@ int main(int argc, char **argv)
         // printf("Ошибка выделения памяти!\n");
         return ERROR_ADD_MEMORY;
     }
+    else if (rc == ERROR_PRICE) {
+        fclose(file_in);
+        fclose(file_out);
+        // printf("Ошибка значения цены!\n");
+        return ERROR_PRICE;
+    }
+    else if (rc == ERROR_LEN_NAME) {
+        fclose(file_in);
+        fclose(file_out);
+        // printf("Ошибка длины имени!\n");
+        return ERROR_LEN_NAME;
+    }
 
     switch (chice_menu) {
         case MODE_POP_FRONT:
@@ -61,6 +73,15 @@ int main(int argc, char **argv)
         case MODE_SORT_POP_FRONT_END:
             pop_front(&head);
             pop_end(&head);
+            head = sort(head, comparator_prices);
+            print_list_to_file(head, file_out);
+            break;
+        case MODE_POP_DUPLICATES:
+            remove_duplicates(&head, comparator_products);
+            print_list_to_file(head, file_out);
+            break;
+        case MODE_POP_DUPLICATES_SORT:
+            remove_duplicates(&head, comparator_products);
             head = sort(head, comparator_prices);
             print_list_to_file(head, file_out);
             break;

@@ -1,0 +1,12 @@
+apple
+1000
+banana
+900
+orange
+800
+pear
+700
+potato
+600
+tomato
+500
