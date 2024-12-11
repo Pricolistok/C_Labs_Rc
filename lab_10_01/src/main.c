@@ -7,25 +7,67 @@
 
 int main(int argc, char **argv)
 {
-    int rc;
-    FILE *file_in;
+    int rc, chice_menu;
+    FILE *file_in, *file_out;
     node_t *head = NULL;
-    rc = open_file(&file_in, argc, argv);
+
+    rc = work_with_args(&file_in, &file_out, argc, argv, &chice_menu);
     switch (rc)
     {
-        case ERROR_OPEN_FILE:
-            printf("Ошибка открытия файла!\n");
-            return ERROR_OPEN_FILE;
+        case ERROR_OPEN_FILE_IN:
+            // printf("Ошибка открытия входного файла!\n");
+            return ERROR_OPEN_FILE_IN;
+        case ERROR_OPEN_FILE_OUT:
+            // printf("Ошибка открытия выходного файла!\n");
+            return ERROR_OPEN_FILE_OUT;
         case ERROR_LEN_FILE:
-            printf("Файл пуст!\n");
+            // printf("Файл пуст!\n");
             return ERROR_LEN_FILE;
         case ERROR_ARGUMENTS:
-            printf("Ошибка количества аргументов!\n");
+            // printf("Ошибка количества аргументов!\n");
             return ERROR_ARGUMENTS;
+        case ERROR_CHOICE_MENU:
+            // printf("Ошибка выбора пункта меню!\n");
+            return ERROR_CHOICE_MENU;
     }
+
     rc = read_from_file(file_in, &head);
-    if (rc != OK)
-        return rc;
-    print_list(head);
+    if (rc == ERROR_READ_PRICE) {
+        fclose(file_in);
+        fclose(file_out);
+        // printf("Ошибка чтения цены!\n");
+        return ERROR_READ_PRICE;
+    }
+    else if (rc == ERROR_ADD_MEMORY) {
+        fclose(file_in);
+        fclose(file_out);
+        // printf("Ошибка выделения памяти!\n");
+        return ERROR_ADD_MEMORY;
+    }
+
+    switch (chice_menu) {
+        case MODE_POP_FRONT:
+            pop_front(&head);
+            print_list_to_file(head, file_out);
+            break;
+        case MODE_POP_END:
+            pop_end(&head);
+            print_list_to_file(head, file_out);
+            break;
+        case MODE_SORT:
+            head = sort(head, comparator_prices);
+            print_list_to_file(head, file_out);
+            break;
+        case MODE_SORT_POP_FRONT_END:
+            pop_front(&head);
+            pop_end(&head);
+            head = sort(head, comparator_prices);
+            print_list_to_file(head, file_out);
+            break;
+    }
+
+    free_all_data(head);
+    fclose(file_in);
+    fclose(file_out);
     return OK;
 }

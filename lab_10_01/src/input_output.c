@@ -10,19 +10,56 @@ int check_len_file(FILE *file)
     return OK;
 }
 
-int open_file(FILE **file, int argc, char **argv)
-{
-    int rc;
-    if (argc != 2)
-        return ERROR_ARGUMENTS;
+int check_choice_menu(char **argv) {
+    if (strcmp(argv[3], "POP_FRONT") == 0)
+        return MODE_POP_FRONT;
+    else if (strcmp(argv[3], "POP_END") == 0)
+        return MODE_POP_END;
+    else if (strcmp(argv[3], "SORT") == 0)
+        return MODE_SORT;
+    else if (strcmp(argv[3], "SORT_POP_FRONT_END") == 0)
+        return MODE_SORT_POP_FRONT_END;
+    return ERROR_CHOICE_MENU;
+}
+
+
+int open_file_in(FILE **file, char **argv) {
     *file = fopen(argv[1], "r");
     if (*file == NULL)
-        return ERROR_OPEN_FILE;
-    rc = check_len_file(*file);
-    if (rc == ERROR_LEN_FILE)
+        return ERROR_OPEN_FILE_IN;
+    if (check_len_file(*file))
         return ERROR_LEN_FILE;
     return OK;
 }
+
+int open_file_out(FILE **file, char **argv) {
+    *file = fopen(argv[2], "w");
+    if (*file == NULL)
+        return ERROR_OPEN_FILE_OUT;
+    return OK;
+}
+
+
+int work_with_args(FILE **file_in, FILE **file_out, int argc, char **argv, int *choice_menu)
+{
+    int rc;
+    if (argc != 4)
+        return ERROR_ARGUMENTS;
+    *choice_menu = check_choice_menu(argv);
+    if (*choice_menu == ERROR_CHOICE_MENU)
+        return ERROR_CHOICE_MENU;
+    rc = open_file_in(file_in, argv);
+    if (rc != OK)
+        return rc;
+    rc = open_file_out(file_out, argv);
+    if (rc != OK) {
+        fclose(*file_in);
+        return rc;
+    }
+    return OK;
+
+}
+
 
 int read_from_file(FILE *file, node_t **head)
 {
@@ -31,23 +68,27 @@ int read_from_file(FILE *file, node_t **head)
     size_t len_name = 0;
     char *name, ch;
     node_t *elem;
+
     while (!feof(file)) {
         saver_pos = ftell(file);
         while ((ch = fgetc(file)) != '\n' && ch != EOF)
             len_name++;
         name = malloc(len_name + 1);
-
         if (!name)
             return ERROR_ADD_MEMORY;
         fseek(file, saver_pos, SEEK_SET);
         for (size_t i = 0; i < len_name; i++)
             name[i] = fgetc(file);
         name[len_name] = 0;
+
         rc = fscanf(file, "%d", &price);
         if (rc != 1)
             return ERROR_READ_PRICE;
         fgetc(file);
+
         elem = create_elem(name, price, len_name);
+        if (elem == NULL)
+            return ERROR_ADD_MEMORY;
         *head = add_to_list_elem_end(*head, elem);
         if (elem == NULL)
             return ERROR_ADD_MEMORY;
@@ -56,6 +97,7 @@ int read_from_file(FILE *file, node_t **head)
     }
     return OK;
 }
+
 
 node_t *add_to_list_elem_end(node_t *head, node_t *elem) {
     node_t *cur = head;
@@ -70,7 +112,11 @@ node_t *add_to_list_elem_end(node_t *head, node_t *elem) {
 
 node_t* create_elem(char *name, int price, size_t len_name) {
     node_t *elem = malloc(sizeof(node_t));
+    if (!elem)
+        return elem;
     product *elem_data = malloc(sizeof(product));
+    if (!elem_data)
+        return NULL;
     elem_data->name = name;
     elem_data->price = price;
     elem_data->len_name = len_name;
@@ -81,12 +127,17 @@ node_t* create_elem(char *name, int price, size_t len_name) {
     return elem;
 }
 
-void print_list(node_t *head) {
+
+void print_list_to_file(node_t *head, FILE *file_out) {
+    if (head == NULL)
+        return;
     for (; head != NULL; head = head->next) {
-        product *elem = (product*)head->data;
+        product *elem = head->data;
         for (size_t i = 0; i < elem->len_name; i++) {
-            printf("%c", elem->name[i]);
+            fprintf(file_out, "%c", elem->name[i]);
         }
-        printf("\n%d\n", elem->price);
+        fprintf(file_out, "\n%d\n", elem->price);
     }
 }
+
+

@@ -39,15 +39,17 @@ endif
 
 all : app.exe
 
-# out/process.o
-app.exe: out/main.o out/input_output.o
-	$(CC) -o app.exe out/main.o out/input_output.o $(EXEFLAGS) -lm
+app.exe: out/main.o out/input_output.o out/process.o
+	$(CC) -o app.exe out/main.o out/input_output.o out/process.o $(EXEFLAGS) -lm
 
 out/main.o: src/main.c inc/input_output.h inc/process.h inc/errors.h inc/struct.h
 	$(CC) $(CFLAGS) -o out/main.o -c src/main.c 
 
 out/input_output.o: src/input_output.c inc/errors.h inc/input_output.h inc/struct.h
 	$(CC) $(CFLAGS) -o out/input_output.o -c src/input_output.c
+
+out/process.o: src/process.c inc/errors.h inc/process.h inc/struct.h
+	$(CC) $(CFLAGS) -o out/process.o -c src/process.c
 
 # out/process.o: src/process.c inc/errors.h inc/process.h
 # 	$(CC) $(CFLAGS) -o out/process.o -c src/process.c
