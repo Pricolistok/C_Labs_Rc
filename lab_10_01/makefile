@@ -37,7 +37,7 @@ ifeq ($(mode), coverage)
   EXEFLAGS += --coverage
 endif
 
-all : app.exe
+all : app.exe unit_tests.exe
 
 app.exe: out/main.o out/input_output.o out/process.o
 	$(CC) -o app.exe out/main.o out/input_output.o out/process.o $(EXEFLAGS) -lm
@@ -51,24 +51,18 @@ out/input_output.o: src/input_output.c inc/errors.h inc/input_output.h inc/struc
 out/process.o: src/process.c inc/errors.h inc/process.h inc/struct.h
 	$(CC) $(CFLAGS) -o out/process.o -c src/process.c
 
-# out/process.o: src/process.c inc/errors.h inc/process.h
-# 	$(CC) $(CFLAGS) -o out/process.o -c src/process.c
-
 # -lsubunit -lpthread -lrt
-#unit_tests.exe: out/check_sort_arr.o out/check_main.o out/process.o out/funcs_for_units.o out/check_key_arr.o
-#	$(CC) -o unit_tests.exe out/funcs_for_units.o out/check_sort_arr.o out/check_main.o out/process.o  out/check_key_arr.o -lcheck -lm
-#
-#out/check_sort_arr.o: unit_tests/check_sort_arr.c inc/errors.h inc/funcs_for_unit.h inc/consts_for_unit.h
-#	$(CC) $(CFLAGS) -o out/check_sort_arr.o -c unit_tests/check_sort_arr.c
-#
-#out/check_key_arr.o: unit_tests/check_key_arr.c inc/errors.h inc/funcs_for_unit.h inc/consts_for_unit.h
-#	$(CC) $(CFLAGS) -o out/check_key_arr.o -c unit_tests/check_key_arr.c
-#
-#out/funcs_for_units.o: unit_tests/funcs_for_units.c inc/errors.h  inc/funcs_for_unit.h inc/consts_for_unit.h
-#	$(CC) $(CFLAGS) -o out/funcs_for_units.o -c unit_tests/funcs_for_units.c
-#
-#out/check_main.o: unit_tests/check_main.c inc/errors.h
-#	$(CC) $(CFLAGS) -o out/check_main.o -c unit_tests/check_main.c
+unit_tests.exe: out/pop_duplicates_test.o out/check_main.o out/process.o out/funcs_for_units.o
+	$(CC) -o unit_tests.exe out/pop_duplicates_test.o out/check_main.o out/process.o out/funcs_for_units.o -lcheck -lm -lsubunit -lpthread -lrt
+
+out/check_main.o: unit_tests/check_main.c inc/process.h
+	$(CC) $(CFLAGS) -o out/check_main.o -c unit_tests/check_main.c
+
+out/pop_duplicates_test.o: unit_tests/pop_duplicates_test.c inc/errors.h inc/process.h inc/funcs_for_units.h
+	$(CC) $(CFLAGS) -o out/pop_duplicates_test.o -c unit_tests/pop_duplicates_test.c
+
+out/funcs_for_units.o: unit_tests/funcs_for_units.c inc/errors.h inc/funcs_for_units.h
+	$(CC) $(CFLAGS) -o out/funcs_for_units.o -c unit_tests/funcs_for_units.c
 
 unit: unit_tests.exe
 	./unit_tests.exe

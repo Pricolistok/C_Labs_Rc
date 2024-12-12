@@ -71,48 +71,6 @@ int comparator_products (const void *compare_1, const void *compare_2) {
     return ERROR;
 }
 
-
-// void remove_duplicates(node_t **head, int (*copmarator)(const void*, const void*)) {
-//     node_t *saver_head = *head;
-//     node_t *next = NULL, *next_tmp, *save_head = *head, *cursor = *head;
-//     node_t *tmp = NULL, **saver_point = NULL;
-//     tmp = *head;
-//     saver_point = head;
-//     if (*head == NULL)
-//         return;
-//     for ( ; *head; *head = next) {
-//         printf("P");
-//         tmp = saver_head;
-//         if ((*head)->next != NULL) {
-//             for ( ; tmp; tmp = next_tmp) {
-//                 if (tmp != *head) {
-//                     if (copmarator((*head)->data, tmp->data) == ERROR) {
-//                         *saver_point = cursor;
-//                         if (tmp->next != NULL)
-//                             (*saver_point)->next = tmp->next;
-//                         else
-//                             (*saver_point)->next = NULL;
-//                         next_tmp = tmp->next;
-//                         product_free(tmp);
-//                     }
-//                     else {
-//                         cursor = tmp;
-//                         next_tmp = tmp->next;
-//                     }
-//                 }
-//                 else {
-//                     cursor = tmp;
-//                     next_tmp = tmp->next;
-//                 }
-//             }
-//         }
-//         if ((*head)->next == NULL)
-//             break;
-//         next = (*head)->next;
-//     }
-//     *head = save_head;
-// }
-
 void remove_duplicates(node_t **head, int (*comparator)(const void*, const void*)) {
     node_t *saver_head = *head;
     node_t *next_head = NULL, *next_tmp = NULL;
