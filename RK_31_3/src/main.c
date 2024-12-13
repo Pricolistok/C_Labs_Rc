@@ -44,7 +44,7 @@ int main(int argc, char **argv)
     }
 
     // Ввод из файла в матрицу
-    input_from_file(file_in, arr);
+    input_from_file(file_in, arr, m);
 
     // Открытие файла для вывода
     rc = open_file_out(&file_out, argc, argv);

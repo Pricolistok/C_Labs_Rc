@@ -26,7 +26,10 @@ int open_file_in(FILE **file, int argc, char **argv)
 
     rc = check_len_file(*file);
     if (rc == ERROR_LEN_FILE)
+    {
+        fclose(*file);
         return ERROR_LEN_FILE;
+    }
 
     return OK;
 }
@@ -69,11 +72,12 @@ void cnt_elem_matrix(FILE *file_in, size_t *n, size_t *m)
 }
 
 // Функция ввода в матрицу из файла
-void input_from_file(FILE *file, double **arr)
+void input_from_file(FILE *file, double **arr, size_t m)
 {
     char *token;
     char *fn_elem;
     char line[LEN_LINE + 1];
+    double value;
     size_t cnt_n = 0, cnt_m = 0;
     fseek(file, 0, SEEK_SET);
     while (fgets(line, LEN_LINE + 1, file) != NULL)
@@ -82,17 +86,23 @@ void input_from_file(FILE *file, double **arr)
         cnt_m = 0;
         while (token != NULL)
         {
-            double value = strtod(token, &fn_elem);
-            if (*fn_elem != '\0' && *fn_elem != '\n' && token == fn_elem)
+            value = strtod(token, &fn_elem);
+            if (*fn_elem != '\0' && *fn_elem != '\n' && token == fn_elem && cnt_m < m)
+            {
                 arr[cnt_n][cnt_m] = NAN;
-            else
+                cnt_m++;
+            }
+            else if (cnt_m < m)
+            {
                 arr[cnt_n][cnt_m] = value;
-            cnt_m++;
+                cnt_m++;
+            }
             token = strtok(NULL, " ");
         }
         cnt_n++;
     }
 }
+
 
 // Функция для вывода матрицы в файл
 void print_matrix_to_file(double **arr, size_t n, size_t m, FILE *file_out)
