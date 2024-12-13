@@ -10,7 +10,8 @@ int check_len_file(FILE *file)
     return OK;
 }
 
-int check_choice_menu(char **argv) {
+int check_choice_menu(char **argv)
+{
     if (strcmp(argv[3], "POP_FRONT") == 0)
         return MODE_POP_FRONT;
     else if (strcmp(argv[3], "POP_END") == 0)
@@ -27,7 +28,8 @@ int check_choice_menu(char **argv) {
 }
 
 
-int open_file_in(FILE **file, char **argv) {
+int open_file_in(FILE **file, char **argv)
+{
     *file = fopen(argv[1], "r");
     if (*file == NULL)
         return ERROR_OPEN_FILE_IN;
@@ -36,7 +38,8 @@ int open_file_in(FILE **file, char **argv) {
     return OK;
 }
 
-int open_file_out(FILE **file, char **argv) {
+int open_file_out(FILE **file, char **argv)
+{
     *file = fopen(argv[2], "w");
     if (*file == NULL)
         return ERROR_OPEN_FILE_OUT;
@@ -56,12 +59,12 @@ int work_with_args(FILE **file_in, FILE **file_out, int argc, char **argv, int *
     if (rc != OK)
         return rc;
     rc = open_file_out(file_out, argv);
-    if (rc != OK) {
+    if (rc != OK)
+    {
         fclose(*file_in);
         return rc;
     }
     return OK;
-
 }
 
 
@@ -71,9 +74,10 @@ int read_from_file(FILE *file, node_t **head)
     int rc, price;
     size_t len_name = 0;
     char *name, ch;
-    node_t *elem;
+    node_t * elem;
 
-    while (!feof(file)) {
+    while (!feof(file))
+    {
         saver_pos = ftell(file);
         while ((ch = fgetc(file)) != '\n' && ch != EOF)
             len_name++;
@@ -107,28 +111,30 @@ int read_from_file(FILE *file, node_t **head)
 }
 
 
-node_t *add_to_list_elem_end(node_t *head, node_t *elem) {
-    node_t *cur = head;
+node_t *add_to_list_elem_end(node_t *head, node_t *elem)
+{
+    node_t * cur = head;
     if (!head)
         return elem;
-    for ( ; cur->next; cur = cur->next)
-        ;
+    for (;cur->next; cur = cur->next);
     cur->next = elem;
     return head;
 }
 
 
-node_t* create_elem(char *name, int price, size_t len_name) {
-    node_t *elem = malloc(sizeof(node_t));
+node_t *create_elem(char *name, int price, size_t len_name)
+{
+    node_t * elem = malloc(sizeof(node_t));
     if (!elem)
         return elem;
-    product *elem_data = malloc(sizeof(product));
+    product * elem_data = malloc(sizeof(product));
     if (!elem_data)
         return NULL;
     elem_data->name = name;
     elem_data->price = price;
     elem_data->len_name = len_name;
-    if (elem) {
+    if (elem)
+    {
         elem->data = elem_data;
         elem->next = NULL;
     }
@@ -136,16 +142,15 @@ node_t* create_elem(char *name, int price, size_t len_name) {
 }
 
 
-void print_list_to_file(node_t *head, FILE *file_out) {
+void print_list_to_file(node_t *head, FILE *file_out)
+{
     if (head == NULL)
         return;
-    for (; head != NULL; head = head->next) {
-        product *elem = head->data;
-        for (size_t i = 0; i < elem->len_name; i++) {
+    for (; head != NULL; head = head->next)
+    {
+        product * elem = head->data;
+        for (size_t i = 0; i < elem->len_name; i++)
             fprintf(file_out, "%c", elem->name[i]);
-        }
         fprintf(file_out, "\n%d\n", elem->price);
     }
 }
-
-
