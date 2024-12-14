@@ -74,7 +74,7 @@ int read_from_file(FILE *file, node_t **head)
     int rc, price;
     size_t len_name = 0;
     char *name, ch;
-    node_t * elem;
+    node_t *elem;
 
     while (!feof(file))
     {
@@ -113,7 +113,7 @@ int read_from_file(FILE *file, node_t **head)
 
 node_t *add_to_list_elem_end(node_t *head, node_t *elem)
 {
-    node_t * cur = head;
+    node_t *cur = head;
     if (!head)
         return elem;
     for (;cur->next; cur = cur->next);
@@ -124,10 +124,10 @@ node_t *add_to_list_elem_end(node_t *head, node_t *elem)
 
 node_t *create_elem(char *name, int price, size_t len_name)
 {
-    node_t * elem = malloc(sizeof(node_t));
+    node_t *elem = malloc(sizeof(node_t));
     if (!elem)
         return elem;
-    product * elem_data = malloc(sizeof(product));
+    product *elem_data = malloc(sizeof(product));
     if (!elem_data)
         return NULL;
     elem_data->name = name;
@@ -148,7 +148,7 @@ void print_list_to_file(node_t *head, FILE *file_out)
         return;
     for (; head != NULL; head = head->next)
     {
-        product * elem = head->data;
+        product *elem = head->data;
         for (size_t i = 0; i < elem->len_name; i++)
             fprintf(file_out, "%c", elem->name[i]);
         fprintf(file_out, "\n%d\n", elem->price);

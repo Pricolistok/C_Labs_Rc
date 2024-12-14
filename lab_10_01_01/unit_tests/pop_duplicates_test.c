@@ -12,8 +12,8 @@ START_TEST(test_one_elem)
     char *name_2 = malloc(5 + 1);
     strcpy(name_1, "apple");
     strcpy(name_2, "apple");
-    product list_product[] = {{name_1, 5, 12}};
-    product list_result[] = {{name_2, 5, 12}};
+    product list_product[] = { { name_1, 5, 12 } };
+    product list_result[] = { { name_2, 5, 12 } };
     node_t *head = NULL;
     node_t *result = NULL;
     head = input_to_list(list_product, 1);
@@ -38,8 +38,8 @@ START_TEST(test_two_elems)
     strcpy(name_head_2, "pear");
     strcpy(name_result_1, "apple");
     strcpy(name_result_2, "pear");
-    product list_product[] = {{name_head_1, 5, 12}, {name_head_2, 4, 16}};
-    product list_result[] = {{name_result_1, 5, 12}, {name_result_2, 4, 16}};
+    product list_product[] = { { name_head_1, 5, 12}, {name_head_2, 4, 16 } };
+    product list_result[] = { { name_result_1, 5, 12}, {name_result_2, 4, 16 } };
     node_t *head = NULL;
     node_t *result = NULL;
     head = input_to_list(list_product, 2);
@@ -63,8 +63,8 @@ START_TEST(test_two_elems_dupl)
     strcpy(name_head_1, "apple");
     strcpy(name_head_2, "apple");
     strcpy(name_result_1, "apple");
-    product list_product[] = {{name_head_1, 5, 12}, {name_head_2, 5, 12}};
-    product list_result[] = {{name_result_1, 5, 12}};
+    product list_product[] = { { name_head_1, 5, 12}, {name_head_2, 5, 12 } };
+    product list_result[] = { { name_result_1, 5, 12 } };
     node_t *head = NULL;
     node_t *result = NULL;
     head = input_to_list(list_product, 2);
@@ -91,8 +91,8 @@ START_TEST(test_two_elems_one_dupl)
     strcpy(name_head_3, "apple");
     strcpy(name_result_1, "apple");
     strcpy(name_result_2, "pear");
-    product list_product[] = {{name_head_1, 5, 12}, {name_head_2, 4, 12},{name_head_3, 5, 12}};
-    product list_result[] = {{name_result_1, 5, 12}, {name_result_2, 4, 12}};
+    product list_product[] = { { name_head_1, 5, 12}, {name_head_2, 4, 12},{name_head_3, 5, 12 } };
+    product list_result[] = { { name_result_1, 5, 12}, {name_result_2, 4, 12 } };
     node_t *head = NULL;
     node_t *result = NULL;
     head = input_to_list(list_product, 3);
@@ -121,8 +121,8 @@ START_TEST(test_two_elems_two_dupl_with_elem_ord)
     strcpy(name_head_4, "pear");
     strcpy(name_result_1, "apple");
     strcpy(name_result_2, "pear");
-    product list_product[] = {{name_head_1, 5, 12}, {name_head_2, 5, 12},{name_head_3, 4, 12}, {name_head_4, 4, 12}};
-    product list_result[] = {{name_result_1, 5, 12}, {name_result_2, 4, 12}};
+    product list_product[] = { { name_head_1, 5, 12}, {name_head_2, 5, 12},{name_head_3, 4, 12}, {name_head_4, 4, 12 } };
+    product list_result[] = { { name_result_1, 5, 12}, {name_result_2, 4, 12 } };
     node_t *head = NULL;
     node_t *result = NULL;
     head = input_to_list(list_product, 4);
@@ -152,8 +152,8 @@ START_TEST(test_two_elems_two_dupl_with_elem_no_ord)
     strcpy(name_head_4, "pear");
     strcpy(name_result_1, "apple");
     strcpy(name_result_2, "pear");
-    product list_product[] = {{name_head_1, 5, 12}, {name_head_2, 4, 12},{name_head_3, 5, 12}, {name_head_4, 4, 12}};
-    product list_result[] = {{name_result_1, 5, 12}, {name_result_2, 4, 12}};
+    product list_product[] = { { name_head_1, 5, 12}, {name_head_2, 4, 12},{name_head_3, 5, 12}, {name_head_4, 4, 12 } };
+    product list_result[] = { { name_result_1, 5, 12}, {name_result_2, 4, 12 } };
     node_t *head = NULL;
     node_t *result = NULL;
     head = input_to_list(list_product, 4);
@@ -166,7 +166,7 @@ START_TEST(test_two_elems_two_dupl_with_elem_no_ord)
 }
 END_TEST
 
-// Тест, когда элементов всего 6 и есть всего два элемента повторяются по 3 раза и дубликаты расположены не подряд
+// Тест, когда элементов всего 6 и есть всего два элемента повторяются по 3 раза и дубликаты расположены подряд
 START_TEST(test_two_elems_three_dupl_with_elem_ord)
 {
     int rc;
@@ -195,7 +195,7 @@ START_TEST(test_two_elems_three_dupl_with_elem_ord)
         {name_head_5, 4, 12},
         {name_head_6, 4, 12}
     };
-    product list_result[] = {{name_result_1, 5, 12}, {name_result_2, 4, 12}};
+    product list_result[] = { { name_result_1, 5, 12}, {name_result_2, 4, 12 } };
     node_t *head = NULL;
     node_t *result = NULL;
     head = input_to_list(list_product, 6);
@@ -208,7 +208,7 @@ START_TEST(test_two_elems_three_dupl_with_elem_ord)
 }
 END_TEST
 
-// Тест, когда много элементов и есть всего более двух элементов, которые повторяются по 2 раза и повторы идут подряд
+// Тест, когда элементов всего 6 и есть всего два элемента повторяются по 3 раза и дубликаты расположены не подряд
 START_TEST(test_two_elems_three_dupl_with_elem_no_ord)
 {
     int rc;
@@ -237,7 +237,7 @@ START_TEST(test_two_elems_three_dupl_with_elem_no_ord)
         {name_head_3, 5, 12},
         {name_head_6, 4, 12}
     };
-    product list_result[] = {{name_result_1, 5, 12}, {name_result_2, 4, 12}};
+    product list_result[] = { { name_result_1, 5, 12}, {name_result_2, 4, 12 } };
     node_t *head = NULL;
     node_t *result = NULL;
     head = input_to_list(list_product, 6);
@@ -250,7 +250,7 @@ START_TEST(test_two_elems_three_dupl_with_elem_no_ord)
 }
 END_TEST
 
-// Тест, когда элементов всего 6 и есть всего два элемента повторяются по 3 раза и дубликаты расположены подряд
+// Тест, когда много элементов и есть всего более двух элементов, которые повторяются по 3 раза и повторы идут подряд
 START_TEST(test_more_elems_more_dupl_with_elem_ord)
 {
     int rc;
@@ -290,7 +290,7 @@ START_TEST(test_more_elems_more_dupl_with_elem_ord)
         {name_head_8, 5, 12},
         {name_head_9, 5, 12}
     };
-    product list_result[] = {{name_result_1, 5, 12}, {name_result_2, 4, 12}, {name_result_3, 5, 12}};
+    product list_result[] = { { name_result_1, 5, 12}, {name_result_2, 4, 12}, {name_result_3, 5, 12 } };
     node_t *head = NULL;
     node_t *result = NULL;
     head = input_to_list(list_product, 9);
@@ -302,6 +302,151 @@ START_TEST(test_more_elems_more_dupl_with_elem_ord)
     ck_assert_int_eq(rc, OK);
 }
 END_TEST
+
+// Тест, когда много элементов и есть всего более двух элементов, которые повторяются по 3 раза и повторы идут не подряд
+START_TEST(test_more_elems_more_dupl_with_elem_no_ord)
+{
+    int rc;
+    char *name_head_1 = malloc(5 + 1);
+    char *name_head_2 = malloc(5 + 1);
+    char *name_head_3 = malloc(5 + 1);
+    char *name_head_4 = malloc(4 + 1);
+    char *name_head_5 = malloc(4 + 1);
+    char *name_head_6 = malloc(4 + 1);
+    char *name_head_7 = malloc(5 + 1);
+    char *name_head_8 = malloc(5 + 1);
+    char *name_head_9 = malloc(5 + 1);
+    char *name_result_1 = malloc(5 + 1);
+    char *name_result_2 = malloc(4 + 1);
+    char *name_result_3 = malloc(5 + 1);
+    strcpy(name_head_1, "apple");
+    strcpy(name_head_2, "apple");
+    strcpy(name_head_3, "apple");
+    strcpy(name_head_4, "pear");
+    strcpy(name_head_5, "pear");
+    strcpy(name_head_6, "pear");
+    strcpy(name_head_7, "peach");
+    strcpy(name_head_8, "peach");
+    strcpy(name_head_9, "peach");
+    strcpy(name_result_1, "apple");
+    strcpy(name_result_2, "pear");
+    strcpy(name_result_3, "peach");
+    product list_product[] =
+    {
+        {name_head_1, 5, 12},
+        {name_head_4, 4, 12},
+        {name_head_7, 5, 12},
+        {name_head_2, 5, 12},
+        {name_head_5, 4, 12},
+        {name_head_8, 5, 12},
+        {name_head_3, 5, 12},
+        {name_head_6, 4, 12},
+        {name_head_9, 5, 12}
+    };
+    product list_result[] = { { name_result_1, 5, 12}, {name_result_2, 4, 12}, {name_result_3, 5, 12 } };
+    node_t *head = NULL;
+    node_t *result = NULL;
+    head = input_to_list(list_product, 9);
+    result = input_to_list(list_result, 3);
+    remove_duplicates(&head, comparator_products);
+    rc = compare_lists(head, result);
+    free_all_data(head);
+    free_all_data(result);
+    ck_assert_int_eq(rc, OK);
+}
+END_TEST
+
+// Тест, когда много элементов и есть всего более двух элементов, которые повторяются по 3 раза и повторы идут не подряд и есть один уникальный элемент в случайном месте
+START_TEST(test_more_elems_more_dupl_with_elem_no_ord_and_uniq_elem)
+{
+    int rc;
+    char *name_head_1 = malloc(5 + 1);
+    char *name_head_2 = malloc(5 + 1);
+    char *name_head_3 = malloc(5 + 1);
+    char *name_head_4 = malloc(4 + 1);
+    char *name_head_5 = malloc(4 + 1);
+    char *name_head_6 = malloc(4 + 1);
+    char *name_head_7 = malloc(5 + 1);
+    char *name_head_8 = malloc(5 + 1);
+    char *name_head_9 = malloc(5 + 1);
+    char *name_head_10 = malloc(6 + 1);
+    char *name_result_1 = malloc(5 + 1);
+    char *name_result_2 = malloc(4 + 1);
+    char *name_result_3 = malloc(5 + 1);
+    char *name_result_4 = malloc(6 + 1);
+    strcpy(name_head_1, "apple");
+    strcpy(name_head_2, "apple");
+    strcpy(name_head_3, "apple");
+    strcpy(name_head_4, "pear");
+    strcpy(name_head_5, "pear");
+    strcpy(name_head_6, "pear");
+    strcpy(name_head_7, "peach");
+    strcpy(name_head_8, "peach");
+    strcpy(name_head_9, "peach");
+    strcpy(name_head_10, "potato");
+    strcpy(name_result_1, "apple");
+    strcpy(name_result_2, "pear");
+    strcpy(name_result_3, "peach");
+    strcpy(name_result_4, "potato");
+
+    product list_product[] =
+    {
+        {name_head_1, 5, 12},
+        {name_head_4, 4, 12},
+        {name_head_7, 5, 12},
+        {name_head_2, 5, 12},
+        {name_head_5, 4, 12},
+        {name_head_10, 6, 12},
+        {name_head_8, 5, 12},
+        {name_head_3, 5, 12},
+        {name_head_6, 4, 12},
+        {name_head_9, 5, 12}
+    };
+    product list_result[] =
+    {
+        {name_result_1, 5, 12},
+        {name_result_2, 4, 12},
+        {name_result_3, 5, 12},
+        {name_result_4, 6, 12}
+    };
+    node_t *head = NULL;
+    node_t *result = NULL;
+    head = input_to_list(list_product, 10);
+    result = input_to_list(list_result, 4);
+    remove_duplicates(&head, comparator_products);
+    rc = compare_lists(head, result);
+    free_all_data(head);
+    free_all_data(result);
+    ck_assert_int_eq(rc, OK);
+}
+END_TEST
+
+// Тест, когда элементов всего 2 и они не дубликаты, тк разные цены
+START_TEST(test_pop_dupl_with_dif_prices)
+{
+    int rc;
+    char *name_head_1 = malloc(5 + 1);
+    char *name_head_2 = malloc(5 + 1);
+    char *name_result_1 = malloc(5 + 1);
+    char *name_result_2 = malloc(5 + 1);
+    strcpy(name_head_1, "apple");
+    strcpy(name_head_2, "apple");
+    strcpy(name_result_1, "apple");
+    strcpy(name_result_2, "apple");
+    product list_product[] = { { name_head_1, 5, 13}, {name_head_2, 4, 16 } };
+    product list_result[] = { { name_result_1, 5, 13}, {name_result_2, 4, 16 } };
+    node_t *head = NULL;
+    node_t *result = NULL;
+    head = input_to_list(list_product, 2);
+    result = input_to_list(list_result, 2);
+    remove_duplicates(&head, comparator_products);
+    rc = compare_lists(head, result);
+    free_all_data(head);
+    free_all_data(result);
+    ck_assert_int_eq(rc, OK);
+}
+END_TEST
+
 
 Suite* pop_duplicates_test(void)
 {
@@ -320,6 +465,9 @@ Suite* pop_duplicates_test(void)
     tcase_add_test(tc_pos, test_two_elems_three_dupl_with_elem_ord);
     tcase_add_test(tc_pos, test_two_elems_three_dupl_with_elem_no_ord);
     tcase_add_test(tc_pos, test_more_elems_more_dupl_with_elem_ord);
+    tcase_add_test(tc_pos, test_more_elems_more_dupl_with_elem_no_ord);
+    tcase_add_test(tc_pos, test_more_elems_more_dupl_with_elem_no_ord_and_uniq_elem);
+    tcase_add_test(tc_pos, test_pop_dupl_with_dif_prices);
 
     suite_add_tcase(s, tc_pos);
 

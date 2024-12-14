@@ -9,7 +9,7 @@ int main(int argc, char **argv)
 {
     int rc, chice_menu;
     FILE *file_in, *file_out;
-    node_t * head = NULL;
+    node_t *head = NULL;
 
     rc = work_with_args(&file_in, &file_out, argc, argv, &chice_menu);
     switch (rc)
