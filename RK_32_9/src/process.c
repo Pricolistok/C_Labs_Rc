@@ -48,4 +48,3 @@ int select_elems(node_t *head, const char *finder) {
     return cnt;
 }
 
-

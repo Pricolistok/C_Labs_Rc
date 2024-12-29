@@ -138,6 +138,7 @@ node_t *create_elem(char *name, int price, size_t len_name)
         elem->data = elem_data;
         elem->next = NULL;
     }
+
     return elem;
 }
 

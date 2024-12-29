@@ -18,10 +18,7 @@ START_TEST(test_one_elem)
     node_t *result = NULL;
     head = input_to_list(list_product, 1);
     result = input_to_list(list_result, 1);
-    remove_duplicates(&head, comparator_products);
-    rc = compare_lists(head, result);
-    free_all_data(head);
-    free_all_data(result);
+    rc = test_rm_duplicates(&head, &result);
     ck_assert_int_eq(rc, OK);
 }
 END_TEST
@@ -44,10 +41,7 @@ START_TEST(test_two_elems)
     node_t *result = NULL;
     head = input_to_list(list_product, 2);
     result = input_to_list(list_result, 2);
-    remove_duplicates(&head, comparator_products);
-    rc = compare_lists(head, result);
-    free_all_data(head);
-    free_all_data(result);
+    rc = test_rm_duplicates(&head, &result);
     ck_assert_int_eq(rc, OK);
 }
 END_TEST
@@ -69,10 +63,7 @@ START_TEST(test_two_elems_dupl)
     node_t *result = NULL;
     head = input_to_list(list_product, 2);
     result = input_to_list(list_result, 1);
-    remove_duplicates(&head, comparator_products);
-    rc = compare_lists(head, result);
-    free_all_data(head);
-    free_all_data(result);
+    rc = test_rm_duplicates(&head, &result);
     ck_assert_int_eq(rc, OK);
 }
 END_TEST
@@ -97,10 +88,7 @@ START_TEST(test_two_elems_one_dupl)
     node_t *result = NULL;
     head = input_to_list(list_product, 3);
     result = input_to_list(list_result, 2);
-    remove_duplicates(&head, comparator_products);
-    rc = compare_lists(head, result);
-    free_all_data(head);
-    free_all_data(result);
+    rc = test_rm_duplicates(&head, &result);
     ck_assert_int_eq(rc, OK);
 }
 END_TEST
@@ -127,10 +115,7 @@ START_TEST(test_two_elems_two_dupl_with_elem_ord)
     node_t *result = NULL;
     head = input_to_list(list_product, 4);
     result = input_to_list(list_result, 2);
-    remove_duplicates(&head, comparator_products);
-    rc = compare_lists(head, result);
-    free_all_data(head);
-    free_all_data(result);
+    rc = test_rm_duplicates(&head, &result);
     ck_assert_int_eq(rc, OK);
 }
 END_TEST
@@ -158,10 +143,7 @@ START_TEST(test_two_elems_two_dupl_with_elem_no_ord)
     node_t *result = NULL;
     head = input_to_list(list_product, 4);
     result = input_to_list(list_result, 2);
-    remove_duplicates(&head, comparator_products);
-    rc = compare_lists(head, result);
-    free_all_data(head);
-    free_all_data(result);
+    rc = test_rm_duplicates(&head, &result);
     ck_assert_int_eq(rc, OK);
 }
 END_TEST
@@ -200,10 +182,7 @@ START_TEST(test_two_elems_three_dupl_with_elem_ord)
     node_t *result = NULL;
     head = input_to_list(list_product, 6);
     result = input_to_list(list_result, 2);
-    remove_duplicates(&head, comparator_products);
-    rc = compare_lists(head, result);
-    free_all_data(head);
-    free_all_data(result);
+    rc = test_rm_duplicates(&head, &result);
     ck_assert_int_eq(rc, OK);
 }
 END_TEST
@@ -242,10 +221,7 @@ START_TEST(test_two_elems_three_dupl_with_elem_no_ord)
     node_t *result = NULL;
     head = input_to_list(list_product, 6);
     result = input_to_list(list_result, 2);
-    remove_duplicates(&head, comparator_products);
-    rc = compare_lists(head, result);
-    free_all_data(head);
-    free_all_data(result);
+    rc = test_rm_duplicates(&head, &result);
     ck_assert_int_eq(rc, OK);
 }
 END_TEST
@@ -295,10 +271,7 @@ START_TEST(test_more_elems_more_dupl_with_elem_ord)
     node_t *result = NULL;
     head = input_to_list(list_product, 9);
     result = input_to_list(list_result, 3);
-    remove_duplicates(&head, comparator_products);
-    rc = compare_lists(head, result);
-    free_all_data(head);
-    free_all_data(result);
+    rc = test_rm_duplicates(&head, &result);
     ck_assert_int_eq(rc, OK);
 }
 END_TEST
@@ -348,10 +321,7 @@ START_TEST(test_more_elems_more_dupl_with_elem_no_ord)
     node_t *result = NULL;
     head = input_to_list(list_product, 9);
     result = input_to_list(list_result, 3);
-    remove_duplicates(&head, comparator_products);
-    rc = compare_lists(head, result);
-    free_all_data(head);
-    free_all_data(result);
+    rc = test_rm_duplicates(&head, &result);
     ck_assert_int_eq(rc, OK);
 }
 END_TEST
@@ -413,10 +383,7 @@ START_TEST(test_more_elems_more_dupl_with_elem_no_ord_and_uniq_elem)
     node_t *result = NULL;
     head = input_to_list(list_product, 10);
     result = input_to_list(list_result, 4);
-    remove_duplicates(&head, comparator_products);
-    rc = compare_lists(head, result);
-    free_all_data(head);
-    free_all_data(result);
+    rc = test_rm_duplicates(&head, &result);
     ck_assert_int_eq(rc, OK);
 }
 END_TEST
@@ -439,10 +406,7 @@ START_TEST(test_pop_dupl_with_dif_prices)
     node_t *result = NULL;
     head = input_to_list(list_product, 2);
     result = input_to_list(list_result, 2);
-    remove_duplicates(&head, comparator_products);
-    rc = compare_lists(head, result);
-    free_all_data(head);
-    free_all_data(result);
+    rc = test_rm_duplicates(&head, &result);
     ck_assert_int_eq(rc, OK);
 }
 END_TEST

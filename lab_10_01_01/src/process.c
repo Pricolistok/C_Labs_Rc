@@ -6,7 +6,7 @@ void *pop_front(node_t **head)
     if (*head == NULL)
         return NULL;
     *head = (*head)->next;
-    product_free(saver_point);
+    free(saver_point);
     return saver_point;
 }
 
@@ -21,7 +21,7 @@ void *pop_end(node_t **head)
     if ((*head)->next == NULL)
     {
         end_point = *head;
-        product_free(*head);
+        free(*head);
         *head = NULL;
         return end_point;
     }
@@ -32,7 +32,7 @@ void *pop_end(node_t **head)
         {
             end_point = (*head)->next;
             (*head)->next = NULL;
-            product_free(end_point);
+            free(end_point);
             break;
         }
     }
@@ -102,7 +102,7 @@ void remove_duplicates(node_t **head, int (*comparator)(const void*, const void*
                 {
                     saver_tmp->next = tmp->next;
                     next_tmp = tmp->next;
-                    product_free(tmp);
+                    free(tmp);
                 }
                 else
                 {

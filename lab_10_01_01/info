@@ -1,0 +1,278 @@
+==22104== Memcheck, a memory error detector
+==22104== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==22104== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==22104== Command: ./unit_tests.exe
+==22104== 
+==22105== 
+==22105== HEAP SUMMARY:
+==22105==     in use at exit: 1,452 bytes in 42 blocks
+==22105==   total heap usage: 63 allocs, 21 frees, 7,078 bytes allocated
+==22105== 
+==22105== LEAK SUMMARY:
+==22105==    definitely lost: 0 bytes in 0 blocks
+==22105==    indirectly lost: 0 bytes in 0 blocks
+==22105==      possibly lost: 0 bytes in 0 blocks
+==22105==    still reachable: 1,452 bytes in 42 blocks
+==22105==         suppressed: 0 bytes in 0 blocks
+==22105== Reachable blocks (those to which a pointer was found) are not shown.
+==22105== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==22105== 
+==22105== For lists of detected and suppressed errors, rerun with: -s
+==22105== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+==22106== 
+==22106== HEAP SUMMARY:
+==22106==     in use at exit: 1,548 bytes in 45 blocks
+==22106==   total heap usage: 81 allocs, 36 frees, 20,295 bytes allocated
+==22106== 
+==22106== LEAK SUMMARY:
+==22106==    definitely lost: 0 bytes in 0 blocks
+==22106==    indirectly lost: 0 bytes in 0 blocks
+==22106==      possibly lost: 0 bytes in 0 blocks
+==22106==    still reachable: 1,548 bytes in 45 blocks
+==22106==         suppressed: 0 bytes in 0 blocks
+==22106== Reachable blocks (those to which a pointer was found) are not shown.
+==22106== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==22106== 
+==22106== For lists of detected and suppressed errors, rerun with: -s
+==22106== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+==22107== 
+==22107== HEAP SUMMARY:
+==22107==     in use at exit: 1,682 bytes in 50 blocks
+==22107==   total heap usage: 90 allocs, 40 frees, 33,378 bytes allocated
+==22107== 
+==22107== 30 (24 direct, 6 indirect) bytes in 1 blocks are definitely lost in loss record 41 of 47
+==22107==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==22107==    by 0x10DA49: create_elem (input_output.c:130)
+==22107==    by 0x10DBDB: input_to_list (funcs_for_units.c:9)
+==22107==    by 0x10AE43: test_two_elems_dupl_fn (pop_duplicates_test.c:64)
+==22107==    by 0x110ECC: srunner_run_tagged (in /home/george/Desktop/C_Labs_Rc/lab_10_01_01/unit_tests.exe)
+==22107==    by 0x10CF82: main (check_main.c:13)
+==22107== 
+==22107== LEAK SUMMARY:
+==22107==    definitely lost: 24 bytes in 1 blocks
+==22107==    indirectly lost: 6 bytes in 1 blocks
+==22107==      possibly lost: 0 bytes in 0 blocks
+==22107==    still reachable: 1,652 bytes in 48 blocks
+==22107==         suppressed: 0 bytes in 0 blocks
+==22107== Reachable blocks (those to which a pointer was found) are not shown.
+==22107== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==22107== 
+==22107== For lists of detected and suppressed errors, rerun with: -s
+==22107== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
+==22108== 
+==22108== HEAP SUMMARY:
+==22108==     in use at exit: 1,794 bytes in 53 blocks
+==22108==   total heap usage: 109 allocs, 56 frees, 46,627 bytes allocated
+==22108== 
+==22108== 30 (24 direct, 6 indirect) bytes in 1 blocks are definitely lost in loss record 40 of 47
+==22108==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==22108==    by 0x10DA49: create_elem (input_output.c:130)
+==22108==    by 0x10DBDB: input_to_list (funcs_for_units.c:9)
+==22108==    by 0x10B096: test_two_elems_one_dupl_fn (pop_duplicates_test.c:89)
+==22108==    by 0x110ECC: srunner_run_tagged (in /home/george/Desktop/C_Labs_Rc/lab_10_01_01/unit_tests.exe)
+==22108==    by 0x10CF82: main (check_main.c:13)
+==22108== 
+==22108== LEAK SUMMARY:
+==22108==    definitely lost: 24 bytes in 1 blocks
+==22108==    indirectly lost: 6 bytes in 1 blocks
+==22108==      possibly lost: 0 bytes in 0 blocks
+==22108==    still reachable: 1,764 bytes in 51 blocks
+==22108==         suppressed: 0 bytes in 0 blocks
+==22108== Reachable blocks (those to which a pointer was found) are not shown.
+==22108== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==22108== 
+==22108== For lists of detected and suppressed errors, rerun with: -s
+==22108== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
+==22109== 
+==22109== HEAP SUMMARY:
+==22109==     in use at exit: 1,889 bytes in 56 blocks
+==22109==   total heap usage: 124 allocs, 68 frees, 59,799 bytes allocated
+==22109== 
+==22109== 29 (24 direct, 5 indirect) bytes in 1 blocks are definitely lost in loss record 40 of 47
+==22109==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==22109==    by 0x10DA49: create_elem (input_output.c:130)
+==22109==    by 0x10DBDB: input_to_list (funcs_for_units.c:9)
+==22109==    by 0x10B343: test_two_elems_two_dupl_with_elem_ord_fn (pop_duplicates_test.c:116)
+==22109==    by 0x110ECC: srunner_run_tagged (in /home/george/Desktop/C_Labs_Rc/lab_10_01_01/unit_tests.exe)
+==22109==    by 0x10CF82: main (check_main.c:13)
+==22109== 
+==22109== LEAK SUMMARY:
+==22109==    definitely lost: 24 bytes in 1 blocks
+==22109==    indirectly lost: 5 bytes in 1 blocks
+==22109==      possibly lost: 0 bytes in 0 blocks
+==22109==    still reachable: 1,860 bytes in 54 blocks
+==22109==         suppressed: 0 bytes in 0 blocks
+==22109== Reachable blocks (those to which a pointer was found) are not shown.
+==22109== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==22109== 
+==22109== For lists of detected and suppressed errors, rerun with: -s
+==22109== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
+==22110== 
+==22110== HEAP SUMMARY:
+==22110==     in use at exit: 2,047 bytes in 61 blocks
+==22110==   total heap usage: 136 allocs, 75 frees, 72,974 bytes allocated
+==22110== 
+==22110== 59 (48 direct, 11 indirect) bytes in 2 blocks are definitely lost in loss record 41 of 48
+==22110==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==22110==    by 0x10DA49: create_elem (input_output.c:130)
+==22110==    by 0x10DBDB: input_to_list (funcs_for_units.c:9)
+==22110==    by 0x10B5F3: test_two_elems_two_dupl_with_elem_no_ord_fn (pop_duplicates_test.c:144)
+==22110==    by 0x110ECC: srunner_run_tagged (in /home/george/Desktop/C_Labs_Rc/lab_10_01_01/unit_tests.exe)
+==22110==    by 0x10CF82: main (check_main.c:13)
+==22110== 
+==22110== LEAK SUMMARY:
+==22110==    definitely lost: 48 bytes in 2 blocks
+==22110==    indirectly lost: 11 bytes in 2 blocks
+==22110==      possibly lost: 0 bytes in 0 blocks
+==22110==    still reachable: 1,988 bytes in 57 blocks
+==22110==         suppressed: 0 bytes in 0 blocks
+==22110== Reachable blocks (those to which a pointer was found) are not shown.
+==22110== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==22110== 
+==22110== For lists of detected and suppressed errors, rerun with: -s
+==22110== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
+==22111== 
+==22111== HEAP SUMMARY:
+==22111==     in use at exit: 2,172 bytes in 66 blocks
+==22111==   total heap usage: 155 allocs, 89 frees, 86,208 bytes allocated
+==22111== 
+==22111== 88 (72 direct, 16 indirect) bytes in 3 blocks are definitely lost in loss record 45 of 49
+==22111==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==22111==    by 0x10DA49: create_elem (input_output.c:130)
+==22111==    by 0x10DBDB: input_to_list (funcs_for_units.c:9)
+==22111==    by 0x10B932: test_two_elems_three_dupl_with_elem_ord_fn (pop_duplicates_test.c:183)
+==22111==    by 0x110ECC: srunner_run_tagged (in /home/george/Desktop/C_Labs_Rc/lab_10_01_01/unit_tests.exe)
+==22111==    by 0x10CF82: main (check_main.c:13)
+==22111== 
+==22111== LEAK SUMMARY:
+==22111==    definitely lost: 72 bytes in 3 blocks
+==22111==    indirectly lost: 16 bytes in 3 blocks
+==22111==      possibly lost: 0 bytes in 0 blocks
+==22111==    still reachable: 2,084 bytes in 60 blocks
+==22111==         suppressed: 0 bytes in 0 blocks
+==22111== Reachable blocks (those to which a pointer was found) are not shown.
+==22111== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==22111== 
+==22111== For lists of detected and suppressed errors, rerun with: -s
+==22111== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
+==22112== 
+==22112== HEAP SUMMARY:
+==22112==     in use at exit: 2,298 bytes in 71 blocks
+==22112==   total heap usage: 166 allocs, 95 frees, 99,319 bytes allocated
+==22112== 
+==22112== 118 (96 direct, 22 indirect) bytes in 4 blocks are definitely lost in loss record 46 of 50
+==22112==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==22112==    by 0x10DA49: create_elem (input_output.c:130)
+==22112==    by 0x10DBDB: input_to_list (funcs_for_units.c:9)
+==22112==    by 0x10BC71: test_two_elems_three_dupl_with_elem_no_ord_fn (pop_duplicates_test.c:222)
+==22112==    by 0x110ECC: srunner_run_tagged (in /home/george/Desktop/C_Labs_Rc/lab_10_01_01/unit_tests.exe)
+==22112==    by 0x10CF82: main (check_main.c:13)
+==22112== 
+==22112== LEAK SUMMARY:
+==22112==    definitely lost: 96 bytes in 4 blocks
+==22112==    indirectly lost: 22 bytes in 4 blocks
+==22112==      possibly lost: 0 bytes in 0 blocks
+==22112==    still reachable: 2,180 bytes in 63 blocks
+==22112==         suppressed: 0 bytes in 0 blocks
+==22112== Reachable blocks (those to which a pointer was found) are not shown.
+==22112== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==22112== 
+==22112== For lists of detected and suppressed errors, rerun with: -s
+==22112== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
+==22113== 
+==22113== HEAP SUMMARY:
+==22113==     in use at exit: 2,394 bytes in 74 blocks
+==22113==   total heap usage: 192 allocs, 118 frees, 112,662 bytes allocated
+==22113== 
+==22113== 118 (96 direct, 22 indirect) bytes in 4 blocks are definitely lost in loss record 46 of 50
+==22113==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==22113==    by 0x10DA49: create_elem (input_output.c:130)
+==22113==    by 0x10DBDB: input_to_list (funcs_for_units.c:9)
+==22113==    by 0x10C0C9: test_more_elems_more_dupl_with_elem_ord_fn (pop_duplicates_test.c:272)
+==22113==    by 0x110ECC: srunner_run_tagged (in /home/george/Desktop/C_Labs_Rc/lab_10_01_01/unit_tests.exe)
+==22113==    by 0x10CF82: main (check_main.c:13)
+==22113== 
+==22113== LEAK SUMMARY:
+==22113==    definitely lost: 96 bytes in 4 blocks
+==22113==    indirectly lost: 22 bytes in 4 blocks
+==22113==      possibly lost: 0 bytes in 0 blocks
+==22113==    still reachable: 2,276 bytes in 66 blocks
+==22113==         suppressed: 0 bytes in 0 blocks
+==22113== Reachable blocks (those to which a pointer was found) are not shown.
+==22113== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==22113== 
+==22113== For lists of detected and suppressed errors, rerun with: -s
+==22113== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
+==22114== 
+==22114== HEAP SUMMARY:
+==22114==     in use at exit: 2,614 bytes in 81 blocks
+==22114==   total heap usage: 204 allocs, 123 frees, 125,901 bytes allocated
+==22114== 
+==22114== 178 (144 direct, 34 indirect) bytes in 6 blocks are definitely lost in loss record 49 of 52
+==22114==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==22114==    by 0x10DA49: create_elem (input_output.c:130)
+==22114==    by 0x10DBDB: input_to_list (funcs_for_units.c:9)
+==22114==    by 0x10C521: test_more_elems_more_dupl_with_elem_no_ord_fn (pop_duplicates_test.c:322)
+==22114==    by 0x110ECC: srunner_run_tagged (in /home/george/Desktop/C_Labs_Rc/lab_10_01_01/unit_tests.exe)
+==22114==    by 0x10CF82: main (check_main.c:13)
+==22114== 
+==22114== LEAK SUMMARY:
+==22114==    definitely lost: 144 bytes in 6 blocks
+==22114==    indirectly lost: 34 bytes in 6 blocks
+==22114==      possibly lost: 0 bytes in 0 blocks
+==22114==    still reachable: 2,436 bytes in 69 blocks
+==22114==         suppressed: 0 bytes in 0 blocks
+==22114== Reachable blocks (those to which a pointer was found) are not shown.
+==22114== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==22114== 
+==22114== For lists of detected and suppressed errors, rerun with: -s
+==22114== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
+==22115== 
+==22115== HEAP SUMMARY:
+==22115==     in use at exit: 2,680 bytes in 82 blocks
+==22115==   total heap usage: 222 allocs, 140 frees, 139,122 bytes allocated
+==22115== 
+==22115== 148 (120 direct, 28 indirect) bytes in 5 blocks are definitely lost in loss record 48 of 51
+==22115==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==22115==    by 0x10DA49: create_elem (input_output.c:130)
+==22115==    by 0x10DBDB: input_to_list (funcs_for_units.c:9)
+==22115==    by 0x10CA12: test_more_elems_more_dupl_with_elem_no_ord_and_uniq_elem_fn (pop_duplicates_test.c:384)
+==22115==    by 0x110ECC: srunner_run_tagged (in /home/george/Desktop/C_Labs_Rc/lab_10_01_01/unit_tests.exe)
+==22115==    by 0x10CF82: main (check_main.c:13)
+==22115== 
+==22115== LEAK SUMMARY:
+==22115==    definitely lost: 120 bytes in 5 blocks
+==22115==    indirectly lost: 28 bytes in 5 blocks
+==22115==      possibly lost: 0 bytes in 0 blocks
+==22115==    still reachable: 2,532 bytes in 72 blocks
+==22115==         suppressed: 0 bytes in 0 blocks
+==22115== Reachable blocks (those to which a pointer was found) are not shown.
+==22115== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==22115== 
+==22115== For lists of detected and suppressed errors, rerun with: -s
+==22115== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
+==22116== 
+==22116== HEAP SUMMARY:
+==22116==     in use at exit: 2,628 bytes in 75 blocks
+==22116==   total heap usage: 195 allocs, 120 frees, 151,647 bytes allocated
+==22116== 
+==22116== LEAK SUMMARY:
+==22116==    definitely lost: 0 bytes in 0 blocks
+==22116==    indirectly lost: 0 bytes in 0 blocks
+==22116==      possibly lost: 0 bytes in 0 blocks
+==22116==    still reachable: 2,628 bytes in 75 blocks
+==22116==         suppressed: 0 bytes in 0 blocks
+==22116== Reachable blocks (those to which a pointer was found) are not shown.
+==22116== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==22116== 
+==22116== For lists of detected and suppressed errors, rerun with: -s
+==22116== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+==22104== 
+==22104== HEAP SUMMARY:
+==22104==     in use at exit: 0 bytes in 0 blocks
+==22104==   total heap usage: 200 allocs, 200 frees, 161,885 bytes allocated
+==22104== 
+==22104== All heap blocks were freed -- no leaks are possible
+==22104== 
+==22104== For lists of detected and suppressed errors, rerun with: -s
+==22104== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
