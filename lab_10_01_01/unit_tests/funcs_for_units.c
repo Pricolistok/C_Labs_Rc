@@ -124,3 +124,17 @@ int test_pop_front(node_t *head, node_t *result)
     rc = compare_lists(head, result);
     return rc;
 }
+
+
+int test_pop_end(node_t *head, node_t *result)
+{
+    int rc;
+    node_t *head_saver = head;
+    product *saver_product = NULL;
+    for (; head_saver->next != NULL; head_saver = head_saver->next);
+    saver_product = head_saver->data;
+    pop_end(&head);
+    free(saver_product->name);
+    rc = compare_lists(head, result);
+    return rc;
+}
