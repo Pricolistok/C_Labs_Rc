@@ -1,6 +1,6 @@
 CC := gcc
 
-CFLAGS := -std=c99 -Wall -Werror -Wpedantic -Wextra -Wfloat-conversion -Wvla -Wfloat-conversion -Wfloat-equal -Iinc
+CFLAGS := -std=c99 -Wall -Werror -Wpedantic -Wextra -Wfloat-conversion -Wvla -Wfloat-equal -Iinc
 EXEFLAGS :=
 
 create := $(shell mkdir -p out)
@@ -50,6 +50,21 @@ out/process.o: src/process.c inc/process.h inc/errors.h inc/struct.h inc/input_o
 out/input_output.o: src/input_output.c inc/input_output.h inc/errors.h inc/struct.h inc/consts.h
 	$(CC) $(CFLAGS) -o out/input_output.o -c src/input_output.c
 
+unit: unit_tests.exe
+	./unit_tests.exe
+
+# -lsubunit -lpthread -lrt
+unit_tests.exe: out/val_check.o out/check_main.o out/process.o out/funcs_for_units.o out/input_output.o
+	$(CC) -o unit_tests.exe out/val_check.o out/check_main.o out/process.o out/input_output.o out/funcs_for_units.o -lcheck -lm -lsubunit -lpthread -lrt
+
+out/check_main.o: unit_tests/check_main.c inc/process.h
+	$(CC) $(CFLAGS) -o out/check_main.o -c unit_tests/check_main.c
+
+out/val_check.o: unit_tests/val_check.c inc/funcs_for_units.h
+	$(CC) $(CFLAGS) -o out/val_check.o -c unit_tests/val_check.c
+
+out/funcs_for_units.o: unit_tests/funcs_for_units.c inc/funcs_for_units.h inc/errors.h inc/process.h inc/struct.h inc/consts.h
+	$(CC) $(CFLAGS) -o out/funcs_for_units.o -c unit_tests/funcs_for_units.c
 
 #func_tests: ./func_tests/scripts/func_tsts.sh
 

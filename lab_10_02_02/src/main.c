@@ -56,7 +56,7 @@ int main(void)
                 // printf("Ошибка ввода значения val!\n");
                 return ERROR_INPUT_VAL;
             }
-            printf("%lf\n", cnt_function(head, val, cnt_coefficients));
+            printf("%lf\n", cnt_val(head, val, cnt_coefficients));
             break;
 
         case 2:

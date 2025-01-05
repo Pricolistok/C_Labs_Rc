@@ -9,7 +9,7 @@
 #include "consts.h"
 #include "input_output.h"
 
-double cnt_function(node_t *head, double val, int cnt_coefficients);
+double cnt_val(node_t *head, double val, int cnt_coefficients);
 void cnt_derivative(node_t *head, int cnt_coefficients);
 void cnt_sum_of_polynomials(node_t *head, node_t *add_head, int diff);
 size_t cnt_degree(node_t *head);

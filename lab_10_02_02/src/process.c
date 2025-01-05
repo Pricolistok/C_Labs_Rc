@@ -1,6 +1,6 @@
 #include "process.h"
 
-double cnt_function(node_t *head, double val, int cnt_coefficients)
+double cnt_val(node_t *head, double val, int cnt_coefficients)
 {
     double sum = 0;
     for (; head != NULL; head = head->next)
