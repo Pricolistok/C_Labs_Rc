@@ -5,6 +5,8 @@
 extern Suite *test_val(void);
 extern Suite *test_sum(void);
 extern Suite *test_ddx(void);
+extern Suite *test_dvd(void);
+
 
 int main(void)
 {
@@ -21,6 +23,11 @@ int main(void)
     srunner_free(runner);
 
     runner = srunner_create(test_ddx());
+    srunner_run_all(runner, CK_VERBOSE);
+    cnt_failed = srunner_ntests_failed(runner);
+    srunner_free(runner);
+
+    runner = srunner_create(test_dvd());
     srunner_run_all(runner, CK_VERBOSE);
     cnt_failed = srunner_ntests_failed(runner);
     srunner_free(runner);

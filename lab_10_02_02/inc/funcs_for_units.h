@@ -12,5 +12,6 @@ int check_func_cnt_val(int coefficients[], int cnt_coefficients, double expected
 int compare_lists(node_t *head_1, node_t *head_2);
 int check_func_cnt_sum(int coefficients_1[], int cnt_coefficients_1, int coefficients_2[], int cnt_coefficients_2, int expected_sum[], int len_expected_sum);
 int check_func_cnt_ddx(int coefficients[], int cnt_coefficients, int expected[], int len_expected);
+int check_func_sep(int coefficients[], int cnt_coefficients, int coefficients_ch[], int cnt_coefficients_ch, int coefficients_nch[], int cnt_coefficients_nch);
 
 #endif
