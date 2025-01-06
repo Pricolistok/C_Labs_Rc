@@ -10,7 +10,7 @@ int main(void)
 {
     int rc, mode, cnt_coefficients, cnt_coefficients_for_mode_sum;
     double val;
-    node_t *head = NULL, *head_for_mode_sum = NULL, *head_ch = NULL, *head_nch =NULL;
+    node_t *head = NULL, *head_for_mode_sum = NULL, *result_for_mode_sum = NULL, *head_ch = NULL, *head_nch =NULL;
     rc = input_mode(&mode);
 
     switch(rc)
@@ -78,17 +78,10 @@ int main(void)
 
                 default:;
             }
-            if (cnt_coefficients > cnt_coefficients_for_mode_sum)
-            {
-                cnt_sum_of_polynomials(head,head_for_mode_sum, cnt_coefficients - cnt_coefficients_for_mode_sum);
-                print_list(head);
-            }
-            else
-            {
-                cnt_sum_of_polynomials(head_for_mode_sum,head, cnt_coefficients_for_mode_sum - cnt_coefficients);
-                print_list(head_for_mode_sum);
-            }
+            cnt_sum_of_polynomials(head,head_for_mode_sum, &result_for_mode_sum, cnt_coefficients, cnt_coefficients_for_mode_sum);
+            print_list(result_for_mode_sum);
             free_list(head_for_mode_sum);
+            free_list(result_for_mode_sum);
             break;
 
         case 4:

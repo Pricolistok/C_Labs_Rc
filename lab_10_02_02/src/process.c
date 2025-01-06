@@ -22,22 +22,31 @@ void cnt_derivative(node_t *head, int cnt_coefficients)
     }
 }
 
-size_t cnt_degree(node_t *head)
+void read_coefficients_for_leveling(node_t **result, node_t **head, int diff)
 {
-    size_t degree = 0;
-    for (; head != NULL; head = head->next)
-        degree++;
-    return degree;
+    node_t *elem = NULL;
+    for (int i = 0; i < diff; i++)
+    {
+        elem = create_elem((*head)->coefficient);
+        *result = add_elem_to_end_list(*result, elem);
+        *head = (*head)->next;
+    }
 }
 
-void cnt_sum_of_polynomials(node_t *head, node_t *add_head, int diff)
+void cnt_sum_of_polynomials(node_t *head, node_t *add_head, node_t **result, int cnt_coefficients, int cnt_coefficients_for_mode_sum)
 {
-    for (int i = 0; i < diff; i++)
-        head = head->next;
+    int diff = abs(cnt_coefficients - cnt_coefficients_for_mode_sum);
+    node_t *elem = NULL;
+
+    if (cnt_coefficients > cnt_coefficients_for_mode_sum)
+        read_coefficients_for_leveling(result, &head, diff);
+    else if (cnt_coefficients < cnt_coefficients_for_mode_sum)
+        read_coefficients_for_leveling(result, &add_head, diff);
 
     for (; head != NULL; head = head->next)
     {
-        head->coefficient = head->coefficient + add_head->coefficient;
+        elem = create_elem(head->coefficient + add_head->coefficient);
+        *result = add_elem_to_end_list(*result, elem);
         add_head = add_head->next;
     }
 }

@@ -36,7 +36,7 @@ ifeq ($(mode), coverage)
 	EXEFLAGS += --coverage
 endif
 
-all: app.exe
+all: app.exe unit
 
 app.exe: out/main.o out/process.o out/input_output.o
 	$(CC) -o app.exe out/main.o out/input_output.o out/process.o $(EXEFLAGS) -lm
@@ -54,14 +54,20 @@ unit: unit_tests.exe
 	./unit_tests.exe
 
 # -lsubunit -lpthread -lrt
-unit_tests.exe: out/val_check.o out/check_main.o out/process.o out/funcs_for_units.o out/input_output.o
-	$(CC) -o unit_tests.exe out/val_check.o out/check_main.o out/process.o out/input_output.o out/funcs_for_units.o -lcheck -lm -lsubunit -lpthread -lrt
+unit_tests.exe: out/val_check.o out/check_main.o out/process.o out/funcs_for_units.o out/input_output.o out/sum_check.o out/ddx_check.o
+	$(CC) -o unit_tests.exe out/val_check.o out/check_main.o out/process.o out/input_output.o out/funcs_for_units.o out/sum_check.o out/ddx_check.o -lcheck -lm -lsubunit -lpthread -lrt
 
 out/check_main.o: unit_tests/check_main.c inc/process.h
 	$(CC) $(CFLAGS) -o out/check_main.o -c unit_tests/check_main.c
 
 out/val_check.o: unit_tests/val_check.c inc/funcs_for_units.h
 	$(CC) $(CFLAGS) -o out/val_check.o -c unit_tests/val_check.c
+
+out/sum_check.o: unit_tests/sum_check.c inc/funcs_for_units.h
+	$(CC) $(CFLAGS) -o out/sum_check.o -c unit_tests/sum_check.c
+
+out/ddx_check.o: unit_tests/ddx_check.c inc/funcs_for_units.h
+	$(CC) $(CFLAGS) -o out/ddx_check.o -c unit_tests/ddx_check.c
 
 out/funcs_for_units.o: unit_tests/funcs_for_units.c inc/funcs_for_units.h inc/errors.h inc/process.h inc/struct.h inc/consts.h
 	$(CC) $(CFLAGS) -o out/funcs_for_units.o -c unit_tests/funcs_for_units.c
