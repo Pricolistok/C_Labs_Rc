@@ -53,7 +53,7 @@ unit: unit_tests.exe
 
 # -lsubunit -lpthread -lrt
 unit_tests.exe: out/s_check.o out/check_main.o out/process.o out/funcs_for_units.o
-	$(CC) -o unit_tests.exe out/s_check.o out/check_main.o out/process.o out/funcs_for_units.o -lcheck -lm -lsubunit -lpthread -lrt
+	$(CC) -o unit_tests.exe out/s_check.o out/check_main.o out/process.o out/funcs_for_units.o -lcheck -lm
 
 out/check_main.o: unit_tests/check_main.c inc/process.h
 	$(CC) $(CFLAGS) -o out/check_main.o -c unit_tests/check_main.c
@@ -70,4 +70,4 @@ clean:
 	$(RM) out/*
 	$(RM) ./*.exe
 	$(RM) ./*.txt
-	$(RM) func_tests/scripts/*.txt
+	$(RM) func_tests/scripts/*.txtща

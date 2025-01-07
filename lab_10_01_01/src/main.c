@@ -76,7 +76,7 @@ int main(int argc, char **argv)
             head_saver = head;
             for (; head_saver->next != NULL; head_saver = head_saver->next);
             saver_product = head_saver->data;
-            pop_end(&head);
+            pop_back(&head);
             free(saver_product->name);
             print_list_to_file(head, file_out);
             break;
@@ -93,7 +93,7 @@ int main(int argc, char **argv)
             head_saver = head;
             for (; head_saver->next != NULL; head_saver = head_saver->next);
             saver_product = head_saver->data;
-            pop_end(&head);
+            pop_back(&head);
             free(saver_product->name);
             head = sort(head, comparator_prices);
             print_list_to_file(head, file_out);
@@ -109,7 +109,8 @@ int main(int argc, char **argv)
             save = head_saver;
             remove_duplicates(&head, comparator_products);
             cur_saver = head_saver;
-            for (node_t *cur = head; cur != NULL; cur = cur->next) {
+            for (node_t *cur = head; cur != NULL; cur = cur->next)
+            {
                 if (cur_saver == NULL)
                     break;
                 if (cur->data != cur_saver->data)
@@ -118,7 +119,8 @@ int main(int argc, char **argv)
                     saver->next = next;
                     free(cur_saver);
                     cur_saver = next;
-                } else
+                }
+                else
                 {
                     saver = cur_saver;
                     cur_saver = cur_saver->next;
@@ -144,7 +146,8 @@ int main(int argc, char **argv)
             save = head_saver;
             remove_duplicates(&head, comparator_products);
             cur_saver = head_saver;
-            for (node_t *cur = head; cur != NULL; cur = cur->next) {
+            for (node_t *cur = head; cur != NULL; cur = cur->next)
+            {
                 if (cur_saver == NULL)
                     break;
                 if (cur->data != cur_saver->data)
@@ -162,7 +165,8 @@ int main(int argc, char **argv)
             }
             head = sort(head, comparator_prices);
             head_saver = save;
-            while (head_saver != NULL) {
+            while (head_saver != NULL)
+            {
                 next = head_saver->next;
                 free(head_saver);
                 head_saver = next;

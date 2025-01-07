@@ -54,23 +54,23 @@ unit: unit_tests.exe
 	./unit_tests.exe
 
 # -lsubunit -lpthread -lrt
-unit_tests.exe: out/val_check.o out/check_main.o out/process.o out/funcs_for_units.o out/input_output.o out/sum_check.o out/dvd_check.o out/ddx_check.o
-	$(CC) -o unit_tests.exe out/val_check.o out/check_main.o out/process.o out/input_output.o out/funcs_for_units.o out/sum_check.o out/dvd_check.o out/ddx_check.o -lcheck -lm -lsubunit -lpthread -lrt
+unit_tests.exe: out/check_val.o out/check_main.o out/process.o out/funcs_for_units.o out/input_output.o out/check_sum.o out/check_dvd.o out/check_ddx.o
+	$(CC) -o unit_tests.exe out/check_val.o out/check_main.o out/process.o out/input_output.o out/funcs_for_units.o out/check_sum.o out/check_dvd.o out/check_ddx.o -lcheck -lm -lsubunit -lpthread -lrt
 
 out/check_main.o: unit_tests/check_main.c inc/process.h
 	$(CC) $(CFLAGS) -o out/check_main.o -c unit_tests/check_main.c
 
-out/val_check.o: unit_tests/val_check.c inc/funcs_for_units.h
-	$(CC) $(CFLAGS) -o out/val_check.o -c unit_tests/val_check.c
+out/check_val.o: unit_tests/check_val.c inc/funcs_for_units.h
+	$(CC) $(CFLAGS) -o out/check_val.o -c unit_tests/check_val.c
 
-out/sum_check.o: unit_tests/sum_check.c inc/funcs_for_units.h
-	$(CC) $(CFLAGS) -o out/sum_check.o -c unit_tests/sum_check.c
+out/check_sum.o: unit_tests/check_sum.c inc/funcs_for_units.h
+	$(CC) $(CFLAGS) -o out/check_sum.o -c unit_tests/check_sum.c
 
-out/ddx_check.o: unit_tests/ddx_check.c inc/funcs_for_units.h
-	$(CC) $(CFLAGS) -o out/ddx_check.o -c unit_tests/ddx_check.c
+out/check_ddx.o: unit_tests/check_ddx.c inc/funcs_for_units.h
+	$(CC) $(CFLAGS) -o out/check_ddx.o -c unit_tests/check_ddx.c
 
-out/dvd_check.o: unit_tests/dvd_check.c inc/funcs_for_units.h
-	$(CC) $(CFLAGS) -o out/dvd_check.o -c unit_tests/dvd_check.c
+out/check_dvd.o: unit_tests/check_dvd.c inc/funcs_for_units.h
+	$(CC) $(CFLAGS) -o out/check_dvd.o -c unit_tests/check_dvd.c
 
 out/funcs_for_units.o: unit_tests/funcs_for_units.c inc/funcs_for_units.h inc/errors.h inc/process.h inc/struct.h inc/consts.h
 	$(CC) $(CFLAGS) -o out/funcs_for_units.o -c unit_tests/funcs_for_units.c

@@ -2,16 +2,18 @@
 
 void *pop_front(node_t **head)
 {
-    void *saver_point = *head;
+    product *saver_data;
+    node_t *saver_point = *head;
     if (*head == NULL)
         return NULL;
     *head = (*head)->next;
+    saver_data = saver_point->data;
     free(saver_point);
-    return saver_point;
+    return saver_data;
 }
 
 
-void *pop_end(node_t **head)
+void *pop_back(node_t **head)
 {
     node_t *next;
     node_t *end_point = NULL;
@@ -37,7 +39,7 @@ void *pop_end(node_t **head)
         }
     }
     *head = save_head;
-    return end_point;
+    return end_point->data;
 }
 
 
@@ -73,12 +75,12 @@ int comparator_products(const void *compare_1, const void *compare_2)
     product *compare_data_1 = (product*)compare_1;
     product *compare_data_2 = (product*)compare_2;
     if (compare_data_1->len_name != compare_data_2->len_name)
-        return OK;
+        return 0;
     if (strcmp(compare_data_1->name, compare_data_2->name) != 0)
-        return OK;
+        return 0;
     if (compare_data_1->price != compare_data_2->price)
-        return OK;
-    return ERROR;
+        return 0;
+    return 1;
 }
 
 void remove_duplicates(node_t **head, int (*comparator)(const void*, const void*))
@@ -98,7 +100,7 @@ void remove_duplicates(node_t **head, int (*comparator)(const void*, const void*
             }
             else
             {
-                if (comparator(tmp->data, (*head)->data) == ERROR)
+                if (comparator(tmp->data, (*head)->data) == 1)
                 {
                     saver_tmp->next = tmp->next;
                     next_tmp = tmp->next;

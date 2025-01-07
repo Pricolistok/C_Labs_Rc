@@ -52,23 +52,23 @@ out/process.o: src/process.c inc/errors.h inc/process.h inc/struct.h
 	$(CC) $(CFLAGS) -o out/process.o -c src/process.c
 
 # -lsubunit -lpthread -lrt
-unit_tests.exe: out/pop_duplicates_test.o out/check_main.o out/process.o out/funcs_for_units.o out/input_output.o out/pop_front_test.o out/pop_end_test.o out/sort_test.o
-	$(CC) -o unit_tests.exe out/pop_duplicates_test.o out/check_main.o out/process.o out/input_output.o out/funcs_for_units.o out/pop_front_test.o out/pop_end_test.o out/sort_test.o -lcheck -lm -lsubunit -lpthread -lrt
+unit_tests.exe: out/check_pop_duplicates.o out/check_main.o out/process.o out/funcs_for_units.o out/input_output.o out/check_pop_front.o out/check_pop_back.o out/check_sort.o
+	$(CC) -o unit_tests.exe out/check_pop_duplicates.o out/check_main.o out/process.o out/input_output.o out/funcs_for_units.o out/check_pop_front.o out/check_pop_back.o out/check_sort.o -lcheck -lm -lsubunit -lpthread -lrt
 
 out/check_main.o: unit_tests/check_main.c inc/process.h
 	$(CC) $(CFLAGS) -o out/check_main.o -c unit_tests/check_main.c
 
-out/pop_duplicates_test.o: unit_tests/pop_duplicates_test.c inc/funcs_for_units.h
-	$(CC) $(CFLAGS) -o out/pop_duplicates_test.o -c unit_tests/pop_duplicates_test.c
+out/check_pop_duplicates.o: unit_tests/check_pop_duplicates.c inc/funcs_for_units.h
+	$(CC) $(CFLAGS) -o out/check_pop_duplicates.o -c unit_tests/check_pop_duplicates.c
 
-out/pop_front_test.o: unit_tests/pop_front_test.c inc/funcs_for_units.h
-	$(CC) $(CFLAGS) -o out/pop_front_test.o -c unit_tests/pop_front_test.c
+out/check_pop_front.o: unit_tests/check_pop_front.c inc/funcs_for_units.h
+	$(CC) $(CFLAGS) -o out/check_pop_front.o -c unit_tests/check_pop_front.c
 
-out/pop_end_test.o: unit_tests/pop_end_test.c inc/funcs_for_units.h
-	$(CC) $(CFLAGS) -o out/pop_end_test.o -c unit_tests/pop_end_test.c
+out/check_pop_back.o: unit_tests/check_pop_back.c inc/funcs_for_units.h
+	$(CC) $(CFLAGS) -o out/check_pop_back.o -c unit_tests/check_pop_back.c
 
-out/sort_test.o: unit_tests/sort_test.c inc/funcs_for_units.h
-	$(CC) $(CFLAGS) -o out/sort_test.o -c unit_tests/sort_test.c
+out/check_sort.o: unit_tests/check_sort.c inc/funcs_for_units.h
+	$(CC) $(CFLAGS) -o out/check_sort.o -c unit_tests/check_sort.c
 
 out/funcs_for_units.o: unit_tests/funcs_for_units.c inc/funcs_for_units.h
 	$(CC) $(CFLAGS) -o out/funcs_for_units.o -c unit_tests/funcs_for_units.c

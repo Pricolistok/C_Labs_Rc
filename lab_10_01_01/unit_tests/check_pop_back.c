@@ -10,7 +10,7 @@ START_TEST(test_zero_elems)
     int rc;
     node_t *head = NULL;
     node_t *result = NULL;
-    pop_end(&head);
+    pop_back(&head);
     rc = compare_lists(head, result);
     ck_assert_int_eq(rc, OK);
 }

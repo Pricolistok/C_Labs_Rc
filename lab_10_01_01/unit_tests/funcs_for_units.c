@@ -133,7 +133,7 @@ int test_pop_end(node_t *head, node_t *result)
     product *saver_product = NULL;
     for (; head_saver->next != NULL; head_saver = head_saver->next);
     saver_product = head_saver->data;
-    pop_end(&head);
+    pop_back(&head);
     free(saver_product->name);
     rc = compare_lists(head, result);
     return rc;
