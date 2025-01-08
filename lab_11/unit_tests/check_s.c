@@ -213,17 +213,29 @@ Suite* test_s(void)
     s = suite_create("spec: s");
     tc_pos = tcase_create("positive");
 
+    // Тест, когда есть одна строка
     tcase_add_test(tc_pos, test_one_str);
+    // Тест, когда есть две строки без пробелов
     tcase_add_test(tc_pos, test_two_strs_no_space);
+    // Тест, когда есть две строки с пробелом
     tcase_add_test(tc_pos, test_two_strs_with_space);
+    // Тест, когда есть две строки с несколькими пробелами
     tcase_add_test(tc_pos, test_two_strs_with_more_spaces);
+    // Тест, когда есть две строки с переносом строки
     tcase_add_test(tc_pos, test_two_strs_with_enter);
+    // Тест, когда есть две строки с несколькими переносами строки
     tcase_add_test(tc_pos, test_two_strs_with_more_enters);
+    // Тест, когда есть две строки с дополнительным процентом
     tcase_add_test(tc_pos, test_two_strs_with_percent);
+    // Тест, когда есть две строки с дополнительными процентами
     tcase_add_test(tc_pos, test_two_strs_with_more_percents_near);
+    // Тест, когда есть много строк
     tcase_add_test(tc_pos, test_two_strs_with_more_strs);
+    // Тест, когда есть много строк и длина строки значительно меньше необходимого
     tcase_add_test(tc_pos, test_two_strs_with_more_strs_overflow_small);
+    // Тест, когда есть много строк и длина строки в половину меньше необходимого
     tcase_add_test(tc_pos, test_two_strs_with_more_strs_overflow_mid);
+    // есть много строк и длина строки значительно больше необходимого
     tcase_add_test(tc_pos, test_two_strs_with_more_strs_memory_over);
 
     suite_add_tcase(s, tc_pos);

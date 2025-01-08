@@ -52,8 +52,8 @@ unit: unit_tests.exe
 	./unit_tests.exe
 
 # -lsubunit -lpthread -lrt
-unit_tests.exe: out/check_s.o out/check_main.o out/process.o out/funcs_for_units.o out/check_li.o
-	$(CC) -o unit_tests.exe out/check_s.o out/check_main.o out/process.o out/funcs_for_units.o out/check_li.o -lcheck -lm -lsubunit -lpthread -lrt
+unit_tests.exe: out/check_s.o out/check_main.o out/check_all.o out/process.o out/funcs_for_units.o out/check_li.o
+	$(CC) -o unit_tests.exe out/check_s.o out/check_main.o out/check_all.o out/process.o out/funcs_for_units.o out/check_li.o -lcheck -lm -lsubunit -lpthread -lrt
 
 out/check_main.o: unit_tests/check_main.c inc/process.h
 	$(CC) $(CFLAGS) -o out/check_main.o -c unit_tests/check_main.c
@@ -63,6 +63,9 @@ out/check_s.o: unit_tests/check_s.c inc/funcs_for_units.h
 
 out/check_li.o: unit_tests/check_li.c inc/funcs_for_units.h
 	$(CC) $(CFLAGS) -o out/check_li.o -c unit_tests/check_li.c
+
+out/check_all.o: unit_tests/check_all.c inc/funcs_for_units.h
+	$(CC) $(CFLAGS) -o out/check_all.o -c unit_tests/check_all.c
 
 out/funcs_for_units.o: unit_tests/funcs_for_units.c inc/funcs_for_units.h inc/errors.h inc/process.h
 	$(CC) $(CFLAGS) -o out/funcs_for_units.o -c unit_tests/funcs_for_units.c
