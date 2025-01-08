@@ -2,15 +2,18 @@
 
 void write_str(char *str, size_t len_str, size_t *position, char *str_arg)
 {
-    while (*str_arg != '\0' && *position < len_str)
+    while (*str_arg != '\0')
     {
-        str[*position] = *str_arg;
-        str_arg++;
+        if (*position < len_str)
+        {
+            str[*position] = *str_arg;
+        }
         *position = *position + 1;
+        str_arg++;
     }
 }
 
-size_t cnt_len_num(int num)
+size_t cnt_len_num(long int num)
 {
     size_t len = 0;
     while (num != 0)
@@ -31,11 +34,11 @@ void reverse_str_num(const char *str_num, char *new_str, size_t last_position)
     *new_str = 0;
 }
 
-void write_int_to_str(long int num, size_t position, size_t len_str, char *str_for_num, int flag_negative)
+void write_int_to_str(long int num, char *str_for_num, int flag_negative)
 {
     const char *digits = "0123456789";
     size_t position_num = 0;
-    while (num != 0 && position + position_num < len_str)
+    while (num != 0)
     {
         str_for_num[position_num] = digits[num % 10];
         num /= 10;
@@ -51,7 +54,7 @@ void write_int_to_str(long int num, size_t position, size_t len_str, char *str_f
         str_for_num[position_num] = 0;
 }
 
-int int_to_str(char *str, long int num, size_t len_str, size_t *position)
+int int_to_str(char *str, long int num, size_t len_str, size_t *position, int flag_overflow)
 {
     int flag_negative = 0;
     size_t len_num = 0;
@@ -72,9 +75,12 @@ int int_to_str(char *str, long int num, size_t len_str, size_t *position)
     if (!result_num)
         return ERROR_ADD_MEMORY;
 
-    write_int_to_str(num, *position, len_str, str_for_num, flag_negative);
+    write_int_to_str(num, str_for_num, flag_negative);
     reverse_str_num(str_for_num, result_num, len_num);
-    write_str(str, len_str, position, result_num);
+    if (flag_overflow != 1)
+        write_str(str, len_str, position, result_num);
+    else
+        *position = *position + strlen(result_num);
     free(str_for_num);
     free(result_num);
     return OK;
@@ -86,20 +92,25 @@ int my_snprintf(char *str, size_t n, const char *format, ...)
     va_list vl;
     long int long_int_argument;
     const char *ptr, *saver_ptr;
+    int flag_overflow = 0;
     char *str_arg;
     size_t position = 0;
 
     va_start(vl, format);
     ptr = format;
-    while (*ptr != 0 && position != n)
+    while (*ptr != 0)
     {
+        if (flag_overflow == 0 && position >= n)
+            flag_overflow = 1;
+
         saver_ptr = ptr + 1;
         if (*ptr == '%')
         {
             if (*saver_ptr == '%')
             {
                 ptr += 2;
-                str[position] = '%';
+                if (flag_overflow != 1)
+                    str[position] = '%';
                 position++;
                 continue;
             }
@@ -107,14 +118,17 @@ int my_snprintf(char *str, size_t n, const char *format, ...)
             if (*ptr == 's')
             {
                 str_arg = va_arg(vl, char*);
-                write_str(str, n, &position, str_arg);
+                if (flag_overflow != 1)
+                    write_str(str, n, &position, str_arg);
+                else
+                    position += strlen(str_arg);
             }
             saver_ptr = ptr + 1;
             if (*ptr == 'l' && *saver_ptr == 'i')
             {
                 ptr++;
                 long_int_argument = va_arg(vl, long int);
-                rc = int_to_str(str, long_int_argument, n, &position);
+                rc = int_to_str(str, long_int_argument, n, &position, flag_overflow);
                 if (rc == ERROR_ADD_MEMORY)
                     return ERROR_ADD_MEMORY;
             }
@@ -128,7 +142,10 @@ int my_snprintf(char *str, size_t n, const char *format, ...)
         ptr++;
     }
     va_end(vl);
-    str[position] = 0;
+    if (flag_overflow == 1)
+        str[n - 1] = 0;
+    else
+        str[position] = 0;
     result_len = position;
     return result_len;
 }
