@@ -2,8 +2,6 @@
 #include <stdlib.h>
 #include <dlfcn.h>
 #include "errors.h"
-#include "input_output.h"
-#include "process.h"
 
 
 int main(int argc, char **argv)
@@ -68,6 +66,20 @@ int main(int argc, char **argv)
 
     int (*key)(const int *, const int *, int *, int *, int *) = dlsym(hlib, "key");
     if (!key)
+    {
+        dlclose(hlib);
+        return -1;
+    }
+
+    void (*close_files)(FILE *, FILE *) = dlsym(hlib, "close_files");
+    if (!close_files)
+    {
+        dlclose(hlib);
+        return -1;
+    }
+
+    int (*compare)(const void *, const void *) = dlsym(hlib, "compare");
+    if (!compare)
     {
         dlclose(hlib);
         return -1;
@@ -154,7 +166,7 @@ int main(int argc, char **argv)
         wite_to_file(file_out, arr_filter, finish_filter);
         free(arr_filter);
     }
-        
+    dlclose(hlib);
     free(arr);
     return OK;
 }

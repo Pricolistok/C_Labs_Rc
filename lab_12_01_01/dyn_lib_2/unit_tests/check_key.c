@@ -1,12 +1,16 @@
 #include <stdlib.h>
 #include <check.h>
-#include "errors_tests.h"
-#include "process.h"
+#include <dlfcn.h>
 #include "errors.h"
+
 
 
 START_TEST(test_simple_first_last)
 {
+    void *hlib = dlopen("./dynlib_2.so", RTLD_NOW);
+    int (*pre_key)(const int *, const int *, size_t *, int **, int **) = dlsym(hlib, "pre_key");
+    int (*key)(const int *, const int *, int *, int *, int *) = dlsym(hlib, "key");
+
     int rc = OK;
     int arr1[] = {10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0};
     int arr_check[] = {9, 8, 7, 6, 5, 4, 3, 2, 1};
@@ -27,11 +31,16 @@ START_TEST(test_simple_first_last)
     else
         ck_assert_int_eq(rc, OK);
     free(start_filter);
+    dlclose(hlib);
 }
 END_TEST
 
 START_TEST(test_simple_first_min)
 {
+    void *hlib = dlopen("./dynlib_2.so", RTLD_NOW);
+    int (*pre_key)(const int *, const int *, size_t *, int **, int **) = dlsym(hlib, "pre_key");
+    int (*key)(const int *, const int *, int *, int *, int *) = dlsym(hlib, "key");
+
     int rc = OK;
     int arr1[] = {1, -100, 9, 8, 7, 6, 5, 4, 3, 2, 1, 100, 9, 8, 78};
     int arr_check[] = {9, 8, 7, 6, 5, 4, 3, 2, 1};
@@ -52,11 +61,16 @@ START_TEST(test_simple_first_min)
     else
         ck_assert_int_eq(rc, OK);
     free(start_filter);
+    dlclose(hlib);
 }
 END_TEST
 
 START_TEST(test_simple_first_max)
 {
+    void *hlib = dlopen("./dynlib_2.so", RTLD_NOW);
+    int (*pre_key)(const int *, const int *, size_t *, int **, int **) = dlsym(hlib, "pre_key");
+    int (*key)(const int *, const int *, int *, int *, int *) = dlsym(hlib, "key");
+
     int rc = OK;
     int arr1[] = {1, 100, 9, 8, 7, 6, 5, 4, 3, 2, 1, -100, 9, 8, 78};
     int arr_check[] = {9, 8, 7, 6, 5, 4, 3, 2, 1};
@@ -77,11 +91,16 @@ START_TEST(test_simple_first_max)
     else
         ck_assert_int_eq(rc, OK);
     free(start_filter);
+    dlclose(hlib);
 }
 END_TEST
 
 START_TEST(test_simple_double_max)
 {
+    void *hlib = dlopen("./dynlib_2.so", RTLD_NOW);
+    int (*pre_key)(const int *, const int *, size_t *, int **, int **) = dlsym(hlib, "pre_key");
+    int (*key)(const int *, const int *, int *, int *, int *) = dlsym(hlib, "key");
+
     int rc = OK;
     int arr1[] = {1, 100, 100, 9, 8, 7, 6, 5, 4, 3, 2, 1, -100, 9, 8, 78};
     int arr_check[] = {100, 9, 8, 7, 6, 5, 4, 3, 2, 1};
@@ -102,11 +121,16 @@ START_TEST(test_simple_double_max)
     else
         ck_assert_int_eq(rc, OK);
     free(start_filter);
+    dlclose(hlib);
 }
 END_TEST
 
 START_TEST(test_simple_double_min)
 {
+    void *hlib = dlopen("./dynlib_2.so", RTLD_NOW);
+    int (*pre_key)(const int *, const int *, size_t *, int **, int **) = dlsym(hlib, "pre_key");
+    int (*key)(const int *, const int *, int *, int *, int *) = dlsym(hlib, "key");
+
     int rc = OK;
     int arr1[] = {1, -100, -100, 9, 8, 7, 6, 5, 4, 3, 2, 1, 100, 9, 8, 78};
     int arr_check[] = {-100, 9, 8, 7, 6, 5, 4, 3, 2, 1};
@@ -127,11 +151,15 @@ START_TEST(test_simple_double_min)
     else
         ck_assert_int_eq(rc, OK);
     free(start_filter);
+    dlclose(hlib);
 }
 END_TEST
 
 START_TEST(test_two_elems)
 {
+    void *hlib = dlopen("./dynlib_2.so", RTLD_NOW);
+    int (*pre_key)(const int *, const int *, size_t *, int **, int **) = dlsym(hlib, "pre_key");
+
     int rc = OK;
     int arr1[] = {100, -100};
     size_t len_arr_1 = 2;
@@ -141,11 +169,15 @@ START_TEST(test_two_elems)
     if (rc != OK)
         rc = OK;
     ck_assert_int_eq(rc, OK);
+    dlclose(hlib);
 }
 END_TEST
 
 START_TEST(test_two_elems_near)
 {
+    void *hlib = dlopen("./dynlib_2.so", RTLD_NOW);
+    int (*pre_key)(const int *, const int *, size_t *, int **, int **) = dlsym(hlib, "pre_key");
+
     int rc = OK;
     int arr1[] = {1, 2, 3, 100, -100, 8, 9};
     size_t len_arr_1 = 2;
@@ -155,11 +187,15 @@ START_TEST(test_two_elems_near)
     if (rc != OK)
         rc = OK;
     ck_assert_int_eq(rc, OK);
+    dlclose(hlib);
 }
 END_TEST
 
 START_TEST(test_all_elems_eq)
 {
+    void *hlib = dlopen("./dynlib_2.so", RTLD_NOW);
+    int (*pre_key)(const int *, const int *, size_t *, int **, int **) = dlsym(hlib, "pre_key");
+
     int rc = OK;
     int arr1[] = {9, 9, 9, 9, 9, 9, 9};
     size_t len_arr_1 = 7;
@@ -169,6 +205,7 @@ START_TEST(test_all_elems_eq)
     if (rc != OK)
         rc = OK;
     ck_assert_int_eq(rc, OK);
+    dlclose(hlib);
 }
 END_TEST
 
