@@ -79,4 +79,5 @@ clean:
 	$(RM) out/* 
 	$(RM) ./*.exe 
 	$(RM) ./*.txt 
-	$(RM) func_tests/scripts/*.txt 
+	$(RM) func_tests/scripts/*.txt
+	$(RM) ./*.so

@@ -40,12 +40,12 @@ endif
 all: app.exe unit
 
 app.exe: out/main.o dynlib_2.so
-	$(CC) -o app.exe out/main.o dynlib_2.so $(EXEFLAGS) -Wl,-rpath,.
+	$(CC) -o app.exe out/main.o $(EXEFLAGS) -ldl
 
 dynlib_2.so: out/input_output.o out/process.o
 	$(CC) -shared -o dynlib_2.so out/input_output.o out/process.o
 
-out/main.o: src/main.c inc/input_output.h inc/process.h inc/errors.h
+out/main.o: src/main.c inc/errors.h
 	$(CC) $(CFLAGS) -o out/main.o -c src/main.c
 
 out/input_output.o: src/input_output.c inc/errors.h inc/input_output.h
@@ -56,7 +56,7 @@ out/process.o: src/process.c inc/errors.h inc/process.h
 
 # -lsubunit -lpthread -lrt
 unit_tests.exe: out/check_my_sort.o out/check_key.o out/check_main.o dynlib_2.so
-	$(CC) -o unit_tests.exe out/check_my_sort.o out/check_key.o out/check_main.o dynlib_2.so -lcheck -lm -lsubunit -lpthread -lrt -Wl,-rpath,.
+	$(CC) -o unit_tests.exe out/check_my_sort.o out/check_key.o out/check_main.o -lcheck -ldl -lm -lsubunit -lpthread -lrt
 
 out/check_my_sort.o: unit_tests/check_my_sort.c inc/errors_tests.h
 	$(CC) $(CFLAGS) -o out/check_my_sort.o -c unit_tests/check_my_sort.c
@@ -79,4 +79,5 @@ clean:
 	$(RM) out/* 
 	$(RM) ./*.exe 
 	$(RM) ./*.txt 
-	$(RM) func_tests/scripts/*.txt 
+	$(RM) func_tests/scripts/*.txt
+	$(RM) ./*.so
