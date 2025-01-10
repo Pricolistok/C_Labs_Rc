@@ -110,7 +110,6 @@ Suite* my_sort_test(void)
     tcase_add_test(tc_pos, test_simple_char_arr_back);
 
     suite_add_tcase(s, tc_pos);
-    
 
     return s;
 }

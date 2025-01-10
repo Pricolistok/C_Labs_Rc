@@ -200,7 +200,7 @@ Suite* key_test(void)
     tcase_add_test(tc_neg, test_two_elems);
     // Тест, когда элементов много, но минимальный и максимальный стоят рядом
     tcase_add_test(tc_neg, test_two_elems_near);
-    // Тест, когда элементов много, но все они равны 
+    // Тест, когда элементов много, но все они равны
     tcase_add_test(tc_neg, test_all_elems_eq);
 
 
