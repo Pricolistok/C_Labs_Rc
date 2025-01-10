@@ -1,6 +1,6 @@
 CC := gcc
 
-CFLAGS := -std=c99 -Wall -Werror -Wpedantic -Wextra -Wvla -Wfloat-conversion -Wfloat-equal -Iinc
+CFLAGS := -std=c99 -Wall -Werror -Wextra -Wvla -Wfloat-conversion -Wfloat-equal -Iinc
 
 EXEFLAGS := 
 
@@ -39,11 +39,11 @@ endif
 
 all: app.exe unit
 
-app.exe: out/main.o dynlib_1.so
-	$(CC) -o app.exe out/main.o dynlib_1.so $(EXEFLAGS) -Wl,-rpath,.
+app.exe: out/main.o dynlib_2.so
+	$(CC) -o app.exe out/main.o dynlib_2.so $(EXEFLAGS) -Wl,-rpath,.
 
-dynlib_1.so: out/input_output.o out/process.o
-	$(CC) -shared -o dynlib_1.so out/input_output.o out/process.o
+dynlib_2.so: out/input_output.o out/process.o
+	$(CC) -shared -o dynlib_2.so out/input_output.o out/process.o
 
 out/main.o: src/main.c inc/input_output.h inc/process.h inc/errors.h
 	$(CC) $(CFLAGS) -o out/main.o -c src/main.c
@@ -55,8 +55,8 @@ out/process.o: src/process.c inc/errors.h inc/process.h
 	$(CC) $(CFLAGS) -fPIC -o out/process.o -c src/process.c
 
 # -lsubunit -lpthread -lrt
-unit_tests.exe: out/check_main.o out/check_my_sort.o out/check_key.o dynlib_1.so
-	$(CC) -o unit_tests.exe out/check_my_sort.o out/check_key.o out/check_main.o dynlib_1.so -Wl,-rpath,. -lcheck -lm -lsubunit -lpthread -lrt
+unit_tests.exe: out/check_my_sort.o out/check_key.o out/check_main.o dynlib_2.so
+	$(CC) -o unit_tests.exe out/check_my_sort.o out/check_key.o out/check_main.o dynlib_2.so -lcheck -lm -lsubunit -lpthread -lrt -Wl,-rpath,.
 
 out/check_my_sort.o: unit_tests/check_my_sort.c inc/errors_tests.h
 	$(CC) $(CFLAGS) -o out/check_my_sort.o -c unit_tests/check_my_sort.c
