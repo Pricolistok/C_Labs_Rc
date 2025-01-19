@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
 #include "associative_array.h"
 
 typedef struct node
@@ -46,11 +45,12 @@ void assoc_array_destroy(assoc_array_t *arr)
     if (!arr || !*arr)
         return;
     free_bin_tree((*arr)->tree);
+    free(*arr);
     *arr = NULL;
 }
 
 
-node_t *insert_to_tree(node_t *node, const char *key, int num, assoc_array_t *error_code)
+node_t *insert_to_tree(node_t *node, const char *key, int num, assoc_array_error_t *error_code)
 {
     int cmp;
 
@@ -59,13 +59,13 @@ node_t *insert_to_tree(node_t *node, const char *key, int num, assoc_array_t *er
         node = malloc(sizeof(node_t));
         if (!node)
         {
-            *error_code =  ASSOC_ARRAY_MEM;
+            *error_code = ASSOC_ARRAY_MEM;
             return NULL;
         }
         node->key = malloc(strlen(key) + 1);
         if (!node->key)
         {
-            *error_code =  ASSOC_ARRAY_MEM;
+            *error_code = ASSOC_ARRAY_MEM;
             return NULL;
         }
         node->left = NULL;
@@ -121,7 +121,7 @@ void find_in_arr(node_t *node, const char *key, int **num, assoc_array_error_t *
 
 assoc_array_error_t assoc_array_find(const assoc_array_t arr, const char *key, int **num)
 {
-    if (arr == NULL || key == NULL || strlen(key) == 0)
+    if (arr == NULL || key == NULL || strlen(key) == 0 || num == NULL)
         return ASSOC_ARRAY_INVALID_PARAM;
 
     assoc_array_error_t error_code = ASSOC_ARRAY_NOT_FOUND;

@@ -178,13 +178,13 @@ int *find_min_node(node_t *node)
 {
     if (node == NULL)
         return NULL;
-    int mini = node->value;
+    char *mini = node->key;
     int *saver = &node->value;
     for (; node != NULL; node = node->next)
     {
-        if (node->value < mini)
+        if (strcmp(node->key, maxi) < 0)
         {
-            mini = node->value;
+            strcpy(maxi, node->key);
             saver = &node->value;
         }
     }
@@ -207,13 +207,13 @@ int *find_max_node(node_t *node)
 {
     if (node == NULL)
         return NULL;
-    int maxi = node->value;
+    char *maxi = node->key;
     int *saver = &node->value;
     for (; node != NULL; node = node->next)
     {
-        if (node->value > maxi)
+        if (strcmp(node->key, maxi) > 0)
         {
-            maxi = node->value;
+            strcpy(maxi, node->key);
             saver = &node->value;
         }
     }

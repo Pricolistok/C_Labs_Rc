@@ -28,15 +28,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d96a3761-c76f-4c7a-bc5b-4b45ce188b08" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../lab_08_08/.idea/editor.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../lab_08_08/.idea/editor.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab_08_08/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../lab_08_08/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab_08_08/makefile" beforeDir="false" afterPath="$PROJECT_DIR$/../lab_08_08/makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab_08_08/src/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/../lab_08_08/src/main.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab_11_01_01/.idea/editor.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../lab_11_01_01/.idea/editor.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab_12_01_01/stat_lib/libstat.a" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab_12_03_02/app_py/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/../lab_12_03_02/app_py/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab_12_03_02/test_in" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab_12_03_02/test_out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/associative_array_impl1.c" beforeDir="false" afterPath="$PROJECT_DIR$/associative_array_impl1.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/makefile" beforeDir="false" afterPath="$PROJECT_DIR$/makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab_10_03_02/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../lab_10_03_02/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab_10_03_02/associative_array_impl2.c" beforeDir="false" afterPath="$PROJECT_DIR$/../lab_10_03_02/associative_array_impl2.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,7 +104,7 @@
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "/home/george/Desktop/C_Labs_Rc/lab_10_03_02",
+    "last_opened_file_path": "/home/george/Desktop/C_Labs_Rc/lab_10_03_01",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -137,11 +133,6 @@
     <configuration name="unit" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="lab_10_03_01" TARGET_NAME="unit" CONFIG_NAME="unit" version="1">
       <method v="2">
         <option name="CLION.COMPOUND.BUILD" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
     <configuration name="app.exe" type="MAKEFILE_TARGET_RUN_CONFIGURATION" factoryName="Makefile" temporary="true">
@@ -173,6 +164,7 @@
       <updated>1737288465982</updated>
       <workItem from="1737288467097" duration="2909000" />
       <workItem from="1737291564072" duration="16272000" />
+      <workItem from="1737315903105" duration="12494000" />
     </task>
     <servers />
   </component>
