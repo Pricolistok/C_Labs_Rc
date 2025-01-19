@@ -4,7 +4,7 @@ from PyQt5.Qt import *
 from PyQt5 import QtWidgets
 import ctypes
 
-lib = ctypes.CDLL('./../dynlib_1.so')
+lib = ctypes.CDLL('./dynlib_1.so')
 
 class Creator(QWidget):
     def __init__(self, parent=None):
@@ -128,7 +128,7 @@ class App(QWidget):
             else:
                 return list()
         text = self.row_input.text()
-        if (len(text) != 0 and self.checker_row(text) == True):
+        if (len(text) != 0 and self.checker_row(text) == True and isdigit(self.row_input_elem.text()) == True):
             row = ""
             for i in more_mem(text, int(self.row_input_elem.text())):
                 row += f" {i}"
@@ -158,7 +158,7 @@ class App(QWidget):
             print(list(dst))
             return list(dst)
         text = self.row_input.text()
-        if (len(text) != 0 and self.checker_row(text) == True):
+        if (len(text) != 0 and self.checker_row(text) == True and isdigit(self.row_input_elem.text()) == True):
             row = ""
             for i in cnt_ch(text, int(self.row_input_elem.text())):
                 row += f" {i}"

@@ -37,6 +37,8 @@ ifeq ($(mode), coverage)
   EXEFLAGS += --coverage
 endif
 
+all: app.exe
+
 app.exe: out/main.o out/input_output.o out/process.o
 	$(CC) -o app.exe out/main.o out/input_output.o out/process.o $(EXEFLAGS) -lm
 

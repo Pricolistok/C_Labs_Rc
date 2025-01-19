@@ -6,6 +6,11 @@
 #include "process.h"
 
 
+int a()
+{
+
+}
+
 int main(void)
 {
     // Инициализация переменных
