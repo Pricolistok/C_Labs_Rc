@@ -37,9 +37,9 @@ endif
 
 all: unit
 
-# -lcheck -lsubunit -lpthread -lrt
+# -lsubunit -lpthread -lrt
 unit_tests.exe: $(OBJS)
-	$(CC) $(CFLAGS) -o $@ $^ $(EXEFLAGS) -lcheck -lsubunit -lpthread -lrt -lm
+	$(CC) $(CFLAGS) -o $@ $^ $(EXEFLAGS) -lcheck -lm 
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@

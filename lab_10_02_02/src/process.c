@@ -1,6 +1,6 @@
 #include "process.h"
 
-double cnt_val(node_t *head, double val, int cnt_coefficients)
+int cnt_val(node_t *head, double val, int cnt_coefficients)
 {
     double sum = 0;
     for (; head != NULL; head = head->next)
@@ -8,14 +8,19 @@ double cnt_val(node_t *head, double val, int cnt_coefficients)
         sum += head->coefficient * pow(val, cnt_coefficients - 1);
         cnt_coefficients--;
     }
-    return sum;
+    return (int)sum;
 }
 
 void cnt_derivative(node_t *head, int cnt_coefficients)
 {
+    if (head->next == NULL)
+    {
+        head->coefficient = 0;
+        return;
+    }
     for (; head != NULL; head = head->next)
     {
-        if (head->coefficient == 0)
+        if (head->next == NULL)
             head->flag = 1;
         head->coefficient = head->coefficient * (cnt_coefficients - 1);
         cnt_coefficients--;

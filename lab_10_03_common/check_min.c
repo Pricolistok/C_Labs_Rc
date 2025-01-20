@@ -156,18 +156,28 @@ Suite* test_min(void)
      s = suite_create("test min");
 
     tc_neg = tcase_create("negative");
+    // Тест, когда ищем в массиве с значением нуль
     tcase_add_test(tc_neg, test_find_min_null_arr);
+    // Тест, когда число имеет адрес нульь
     tcase_add_test(tc_neg, test_find_min_null_num);
+    // Тест, когда ищем в не созданном файле
     tcase_add_test(tc_neg, test_find_min_no_created_arr);
+    // Тест, когда ищем в пустом массиве
     tcase_add_test(tc_neg, test_find_min_free_arr);
+    // Тест, когда идем в пустом массиве
     tcase_add_test(tc_neg, test_find_min_no_elem);
 
 
     tc_pos = tcase_create("positive");
+    // Тест, когда один элемент
     tcase_add_test(tc_pos, test_find_min_one_elem);
+    // Тест, когда эдементов два
     tcase_add_test(tc_pos, test_find_min_two_elems);
+    // Тест, когда много элементов и искомое в анчале
     tcase_add_test(tc_pos, test_find_min_more_elems_in_start);
+    // Тест, когда много элементов и искомое в середине
     tcase_add_test(tc_pos, test_find_min_more_elems_in_center);
+    // Тест, когда много элементов и искомое в конце
     tcase_add_test(tc_pos, test_find_min_more_elems_in_end);
 
     suite_add_tcase(s, tc_neg);

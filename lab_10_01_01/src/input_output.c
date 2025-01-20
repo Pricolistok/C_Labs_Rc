@@ -126,19 +126,18 @@ node_t *create_elem(char *name, int price, size_t len_name)
 {
     node_t *elem = malloc(sizeof(node_t));
     if (!elem)
-        return elem;
+        return NULL;
     product *elem_data = malloc(sizeof(product));
     if (!elem_data)
+    {
+        free(elem);
         return NULL;
+    }
     elem_data->name = name;
     elem_data->price = price;
     elem_data->len_name = len_name;
-    if (elem)
-    {
-        elem->data = elem_data;
-        elem->next = NULL;
-    }
-
+    elem->data = elem_data;
+    elem->next = NULL;
     return elem;
 }
 

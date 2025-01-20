@@ -26,12 +26,18 @@ START_TEST(test_one_elem)
     node_t *head = NULL;
     node_t *result = NULL;
     head = input_to_list(list_product, 1);
-    rc = test_pop_end(head, result);
+    result = NULL;
+    rc = test_pop_end(&head, result);
+    free_all_data(head);
+    // free(name_head_1);
     ck_assert_int_eq(rc, OK);
 }
 END_TEST
 
+
+
 // Тест, когда элемент всего 2
+
 START_TEST(test_two_elems)
 {
     int rc;
@@ -44,13 +50,16 @@ START_TEST(test_two_elems)
     product list_product[] = { { name_head_1, 5, 12}, { name_head_2, 4, 13}};
     product list_result[] = {{ name_result_1, 5, 12}};
     node_t *head = NULL;
-    node_t *result = NULL;
+    node_t *result;
     head = input_to_list(list_product, 2);
     result = input_to_list(list_result, 1);
-    rc = test_pop_end(head, result);
+    rc = test_pop_end(&head, result);
+    free_all_data(head);
+    free_all_data(result);
     ck_assert_int_eq(rc, OK);
 }
 END_TEST
+
 
 // Тест, когда элементов много
 START_TEST(test_more_elems)
@@ -71,15 +80,18 @@ START_TEST(test_more_elems)
     strcpy(name_result_2, "pear");
     strcpy(name_result_3, "apple");
     product list_product[] = { { name_head_1, 5, 12}, {name_head_2, 4, 12},{name_head_3, 5, 12 }, {name_head_4, 6, 42 } };
-    product list_result[] = { {name_result_1, 5, 12},{name_result_2, 4, 12 }, {name_result_3, 5, 42 }};
+    product list_result[] = { {name_result_1, 5, 12},{name_result_2, 4, 12 }, {name_result_3, 5, 12 }};
     node_t *head = NULL;
     node_t *result = NULL;
-    head = input_to_list(list_product, 3);
-    result = input_to_list(list_result, 2);
-    rc = test_pop_end(head, result);
+    head = input_to_list(list_product, 4);
+    result = input_to_list(list_result, 3);
+    rc = test_pop_end(&head, result);
+    free_all_data(head);
+    free_all_data(result);
     ck_assert_int_eq(rc, OK);
 }
 END_TEST
+
 
 
 

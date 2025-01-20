@@ -12,11 +12,12 @@ node_t *input_to_list(product list_products[], size_t len_arr)
     return head;
 }
 
+
 int compare_lists(node_t *head, node_t *result)
 {
     node_t *next_elem;
     product *head_data, *result_data;
-    for ( ; head; head = next_elem)
+    for (; head; head = next_elem)
     {
         head_data = head->data;
         result_data = result->data;
@@ -38,7 +39,7 @@ void print_list(node_t *head)
 {
     node_t *next_elem;
     product *head_data;
-    for ( ; head; head = next_elem)
+    for (; head; head = next_elem)
     {
         head_data = head->data;
         for (size_t i = 0; i < head_data->len_name; i++)
@@ -59,7 +60,7 @@ void free_all_data_for_test(node_t *head)
         free(head);
         return;
     }
-    for ( ; head; head = next)
+    for (; head; head = next)
     {
         next = head->next;
         free(head->data);
@@ -71,70 +72,82 @@ void free_all_data_for_test(node_t *head)
 int test_rm_duplicates(node_t **head, node_t **result)
 {
     int rc;
-    node_t *elem = NULL, *head_saver = NULL, *cur_saver= NULL, *next = NULL, *save = NULL, *saver = NULL;
+    node_t *elem = NULL, *saver = NULL, *next = NULL;
+    node_t *head_saver = NULL;
+
     for (node_t *cur = *head; cur != NULL; cur = cur->next)
     {
         elem = malloc(sizeof(node_t));
+        if (elem == NULL)
+            return -1;
         elem->data = cur->data;
         elem->next = NULL;
         head_saver = add_to_list_elem_end(head_saver, elem);
     }
-    save = head_saver;
     remove_duplicates(head, comparator_products);
-    cur_saver = head_saver;
-    for (node_t *cur = *head; cur != NULL; cur = cur->next) {
-        if (cur_saver == NULL)
-            break;
-        if (cur->data != cur_saver->data)
-        {
-            next = cur_saver->next;
-            saver->next = next;
-            product_free(cur_saver);
-            cur_saver = next;
-        }
-        else
-        {
-            saver = cur_saver;
-            cur_saver = cur_saver->next;
-        }
-    }
-
-    head_saver = save;
-    while (head_saver != NULL)
-    {
-        next = head_saver->next;
-        free(head_saver);
-        if (next == NULL)
-            break;
-        head_saver = next;
-    }
-
+    saver = *head;
     rc = compare_lists(*head, *result);
-    free_all_data(*head);
+    while (saver != NULL)
+    {
+        next = saver->next;
+        free(saver);
+        saver = next;
+    }
+    free_all_data(head_saver);
     free_all_data(*result);
-    return rc;
-}
 
-int test_pop_front(node_t *head, node_t *result)
-{
-    int rc;
-    product *saver_product = head->data;
-    pop_front(&head);
-    free(saver_product);
-    rc = compare_lists(head, result);
     return rc;
 }
 
 
-int test_pop_end(node_t *head, node_t *result)
+
+
+
+int test_pop_front(node_t **head, node_t *result)
 {
     int rc;
-    node_t *head_saver = head;
     product *saver_product = NULL;
+    if (*head != NULL)
+    {
+        saver_product = (*head)->data;
+        pop_front(head);
+    }
+    if (saver_product != NULL)
+    {
+        free(saver_product->name);
+        free(saver_product);
+    }
+    rc = compare_lists(*head, result);
+    return rc;
+}
+
+
+
+
+int test_pop_end(node_t **head, node_t *result)
+{
+    int rc;
+    node_t *head_saver = *head;
+    product *saver_product = NULL;
+    void *data;
+
+    if (*head == NULL)
+    {
+        if (result == NULL)
+            return OK;
+        return ERROR;
+    }
+
     for (; head_saver->next != NULL; head_saver = head_saver->next);
     saver_product = head_saver->data;
-    pop_back(&head);
-    free(saver_product->name);
-    rc = compare_lists(head, result);
+
+    data = pop_back(head);
+    free(((product*)data)->name);
+    free(data);
+    if (saver_product != data)
+        return ERROR;
+    rc = compare_lists(*head, result);
     return rc;
 }
+
+

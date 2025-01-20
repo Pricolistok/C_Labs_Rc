@@ -156,18 +156,28 @@ Suite* test_max(void)
      s = suite_create("test max");
 
     tc_neg = tcase_create("negative");
+    // Тест, когда ищем в массиве с значением нуль
     tcase_add_test(tc_neg, test_find_max_null_arr);
+    // Тест, когда число имеет нулевой адрес
     tcase_add_test(tc_neg, test_find_max_null_num);
+    // Тест, когда ищем максимальное в не созданном массиве
     tcase_add_test(tc_neg, test_find_max_no_created_arr);
+    // Тест, когда ищем в чистом массиве
     tcase_add_test(tc_neg, test_find_max_free_arr);
+    // Тест, когда ищем в пустом массиве
     tcase_add_test(tc_neg, test_find_max_no_elem);
 
 
     tc_pos = tcase_create("positive");
+    // Тест, когда есть один элемент
     tcase_add_test(tc_pos, test_find_max_one_elem);
+    // Тест, когда есть два элемента
     tcase_add_test(tc_pos, test_find_max_two_elems);
+    // Тест, когда есть много элементов, а искомое в начале
     tcase_add_test(tc_pos, test_find_max_more_elems_in_start);
+    // Тест, когда есть много элементов, а искомое в середине
     tcase_add_test(tc_pos, test_find_max_more_elems_in_center);
+    // Тест, когда есть много элементов, а искомое в конце
     tcase_add_test(tc_pos, test_find_max_more_elems_in_end);
 
     suite_add_tcase(s, tc_neg);

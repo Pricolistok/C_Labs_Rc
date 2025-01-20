@@ -130,7 +130,7 @@ assoc_array_error_t assoc_array_find(const assoc_array_t arr, const char *key, i
 }
 
 
-static node_t* find_minimum_elem(node_t *node)
+static node_t *find_minimum_elem(node_t *node)
 {
     while (node && node->left != NULL)
         node = node->left;
@@ -138,7 +138,7 @@ static node_t* find_minimum_elem(node_t *node)
 }
 
 
-node_t* remove_node(node_t *node, const char *key, assoc_array_error_t *error)
+node_t *remove_node(node_t *node, const char *key, assoc_array_error_t *error)
 {
     node_t *tmp;
     node_t *mini_elem;
@@ -229,7 +229,7 @@ assoc_array_error_t assoc_array_each(const assoc_array_t arr, void (*action)(con
 }
 
 
-node_t* find_min_node(const node_t *node)
+node_t *find_min_node(const node_t *node)
 {
     if (node == NULL)
         return NULL;
@@ -251,7 +251,7 @@ assoc_array_error_t assoc_array_min(const assoc_array_t arr, int **num)
 }
 
 
-node_t* find_max_node(const node_t *node)
+node_t *find_max_node(const node_t *node)
 {
     if (node == NULL)
         return NULL;

@@ -217,16 +217,24 @@ Suite* test_each(void)
      s = suite_create("test each");
 
     tc_neg = tcase_create("negative");
+    // Тест, когд передается пустой указатель на функцию
     tcase_add_test(tc_neg, test_each_null_action);
+    // Тест, когда передается не созданный массив
     tcase_add_test(tc_neg, test_each_no_created_arr);
 
 
     tc_pos = tcase_create("positive");
+    // Тест, когда один элемент и параметр нуль
     tcase_add_test(tc_pos, test_each_one_elem_param_null);
+    // Тест, когда два элемента и параметр нуль
     tcase_add_test(tc_pos, test_each_two_elems_param_null);
+    // Тест, когда много элементов и параметр нуль
     tcase_add_test(tc_pos, test_each_more_elems_param_null);
+    // Тест, когда один элемент и параметр не нуль
     tcase_add_test(tc_pos, test_each_one_elem_param_not_null);
+    // Тест, когда два элемента и параметр не нуль
     tcase_add_test(tc_pos, test_each_two_elems_param_not_null);
+    // Тест, когда много элементов и параметр не нуль
     tcase_add_test(tc_pos, test_each_more_elems_param_not_null);
 
     suite_add_tcase(s, tc_neg);

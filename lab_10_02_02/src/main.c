@@ -10,20 +10,19 @@ int main(void)
 {
     int rc, mode, cnt_coefficients, cnt_coefficients_for_mode_sum;
     double val;
-    node_t *head = NULL, *head_for_mode_sum = NULL, *result_for_mode_sum = NULL, *head_ch = NULL, *head_nch =NULL;
+    node_t *head = NULL, *head_for_mode_sum = NULL, *result_for_mode_sum = NULL, *head_ch = NULL, *head_nch = NULL;
     rc = input_mode(&mode);
 
-    switch(rc)
+    switch (rc)
     {
         case ERROR_LEN_MODE:
             // printf("Ошибка длины аргумента меню!\n");
             return ERROR_LEN_MODE;
-
         case ERROR_VALUE_MODE:
-            // printf("Ошибка занчения аргумента меню!\n");
+            // printf("Ошибка значения аргумента меню!\n");
             return ERROR_VALUE_MODE;
-
-        default:;
+        default:
+            break;
     }
 
     rc = read_coefficients(&head, &cnt_coefficients);
@@ -32,18 +31,16 @@ int main(void)
         case ERROR_CNT_COEFFICIENTS:
             // printf("Ошибка количсетва коафициентов!\n");
             return ERROR_CNT_COEFFICIENTS;
-
         case ERROR_INPUT_COEFFICIENT:
             free_list(head);
             // printf("Ошибка значения коафициента!\n");
             return ERROR_CNT_COEFFICIENTS;
-
         case ERROR_INPUT_MORE_COEFFICIENT:
             free_list(head);
             // printf("Ошибка количества коафициентов!\n");
             return ERROR_INPUT_MORE_COEFFICIENT;
-
-        default:;
+        default:
+            break;
     }
 
     switch (mode)
@@ -56,42 +53,41 @@ int main(void)
                 // printf("Ошибка ввода значения val!\n");
                 return ERROR_INPUT_VAL;
             }
-            printf("%lf\n", cnt_val(head, val, cnt_coefficients));
+            printf("%d\n", cnt_val(head, val, cnt_coefficients));
             break;
-
         case 2:
             cnt_derivative(head, cnt_coefficients);
             print_list(head);
             break;
-
         case 3:
             rc = read_coefficients(&head_for_mode_sum, &cnt_coefficients_for_mode_sum);
             switch (rc)
             {
                 case ERROR_CNT_COEFFICIENTS:
                     // printf("Ошибка количсетва коафициентов!\n");
+                    free_list(head);
                     return ERROR_CNT_COEFFICIENTS;
-
                 case ERROR_INPUT_COEFFICIENT:
+                    free_list(head_for_mode_sum);
+                    free_list(head);
                     // printf("Ошибка значения коафициента!\n");
                     return ERROR_CNT_COEFFICIENTS;
-
-                default:;
+                default:
+                    break;
             }
-            cnt_sum_of_polynomials(head,head_for_mode_sum, &result_for_mode_sum, cnt_coefficients, cnt_coefficients_for_mode_sum);
+            cnt_sum_of_polynomials(head, head_for_mode_sum, &result_for_mode_sum, cnt_coefficients, cnt_coefficients_for_mode_sum);
             print_list(result_for_mode_sum);
             free_list(head_for_mode_sum);
             free_list(result_for_mode_sum);
             break;
-
         case 4:
             separator_coefficients(head, &head_ch, &head_nch, cnt_coefficients);
             print_list(head_ch);
             print_list(head_nch);
             free_list(head_ch);
             free_list(head_nch);
-
-        default:;
+        default:
+            break;
     }
     free_list(head);
     return OK;

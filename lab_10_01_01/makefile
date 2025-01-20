@@ -53,7 +53,7 @@ out/process.o: src/process.c inc/errors.h inc/process.h inc/struct.h
 
 # -lsubunit -lpthread -lrt
 unit_tests.exe: out/check_pop_duplicates.o out/check_main.o out/process.o out/funcs_for_units.o out/input_output.o out/check_pop_front.o out/check_pop_back.o out/check_sort.o
-	$(CC) -o unit_tests.exe out/check_pop_duplicates.o out/check_main.o out/process.o out/input_output.o out/funcs_for_units.o out/check_pop_front.o out/check_pop_back.o out/check_sort.o -lcheck -lm -lsubunit -lpthread -lrt
+	$(CC) -o unit_tests.exe out/check_pop_duplicates.o out/check_main.o out/process.o out/input_output.o out/funcs_for_units.o out/check_pop_front.o out/check_pop_back.o out/check_sort.o -lcheck -lm
 
 out/check_main.o: unit_tests/check_main.c inc/process.h
 	$(CC) $(CFLAGS) -o out/check_main.o -c unit_tests/check_main.c

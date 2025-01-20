@@ -104,15 +104,22 @@ Suite* test_insert(void)
      s = suite_create("test insert");
 
     tc_neg = tcase_create("negative");
+    // Тест, когда ключ равен нуль
     tcase_add_test(tc_neg, test_insert_null_key);
+    // Тест, когда ключ нулевой длины
     tcase_add_test(tc_neg, test_insert_zero_len_key);
+    // Тест, когда добавляем в не сзданный массив
     tcase_add_test(tc_neg, test_insert_no_created_arr);
+    // Тест, когда такой элемент уже есть
     tcase_add_test(tc_neg, test_insert_exist_elem);
 
 
     tc_pos = tcase_create("positive");
+    // Тест, когда добавляем один элемент
     tcase_add_test(tc_pos, test_insert_one_elem);
+    // Тест, когда добавляем два элемента
     tcase_add_test(tc_pos, test_insert_two_elems);
+    // Тест, когда добавляем много элементов
     tcase_add_test(tc_pos, test_insert_more_elems);
 
     suite_add_tcase(s, tc_neg);

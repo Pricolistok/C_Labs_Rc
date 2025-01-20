@@ -46,7 +46,6 @@ START_TEST(test_two_elems)
 }
 END_TEST
 
-
 // Тест, когда элементов всего 2 и они дубликаты
 START_TEST(test_two_elems_dupl)
 {
@@ -275,7 +274,7 @@ START_TEST(test_more_elems_more_dupl_with_elem_ord)
     ck_assert_int_eq(rc, OK);
 }
 END_TEST
-
+//
 // Тест, когда много элементов и есть всего более двух элементов, которые повторяются по 3 раза и повторы идут не подряд
 START_TEST(test_more_elems_more_dupl_with_elem_no_ord)
 {
@@ -387,7 +386,7 @@ START_TEST(test_more_elems_more_dupl_with_elem_no_ord_and_uniq_elem)
     ck_assert_int_eq(rc, OK);
 }
 END_TEST
-
+//
 // Тест, когда элементов всего 2 и они не дубликаты, тк разные цены
 START_TEST(test_pop_dupl_with_dif_prices)
 {

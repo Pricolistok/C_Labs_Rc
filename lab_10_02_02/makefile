@@ -55,7 +55,7 @@ unit: unit_tests.exe
 
 # -lsubunit -lpthread -lrt
 unit_tests.exe: out/check_val.o out/check_main.o out/process.o out/funcs_for_units.o out/input_output.o out/check_sum.o out/check_dvd.o out/check_ddx.o
-	$(CC) -o unit_tests.exe out/check_val.o out/check_main.o out/process.o out/input_output.o out/funcs_for_units.o out/check_sum.o out/check_dvd.o out/check_ddx.o -lcheck -lm -lsubunit -lpthread -lrt
+	$(CC) -o unit_tests.exe out/check_val.o out/check_main.o out/process.o out/input_output.o out/funcs_for_units.o out/check_sum.o out/check_dvd.o out/check_ddx.o -lcheck -lm
 
 out/check_main.o: unit_tests/check_main.c inc/process.h
 	$(CC) $(CFLAGS) -o out/check_main.o -c unit_tests/check_main.c

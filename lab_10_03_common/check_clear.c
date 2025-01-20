@@ -78,13 +78,18 @@ Suite* test_clear(void)
     s = suite_create("test clear");
 
     tc_neg = tcase_create("negative");
+    // Тест, когда очищается не созданный массив
     tcase_add_test(tc_neg, test_clear_no_create_arr);
 
 
     tc_pos = tcase_create("positive");
+    // Тест, когда очищается пустой массив
     tcase_add_test(tc_pos, test_clear_free_arr);
+    // Тест, когда очищается массив с одним элементом
     tcase_add_test(tc_pos, test_clear_arr_with_one_elem);
+    // Тест, когда очищается массив с двумя элементами
     tcase_add_test(tc_pos, test_clear_arr_with_two_elems);
+    // Тест, когда очищается массив с большим количеством элементов
     tcase_add_test(tc_pos, test_clear_arr_with_more_elems);
 
     suite_add_tcase(s, tc_neg);

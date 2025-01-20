@@ -186,20 +186,32 @@ Suite* test_find(void)
      s = suite_create("test find");
 
     tc_neg = tcase_create("negative");
+    // Тест, когда ключ нуль
     tcase_add_test(tc_neg, test_find_null_key);
+    // Тест, когда массив нуль
     tcase_add_test(tc_neg, test_find_null_arr);
+    // Тест, когда число нуль
     tcase_add_test(tc_neg, test_find_null_num);
+    // Тетс, когда длина ключа нуль
     tcase_add_test(tc_neg, test_find_zero_len_key);
+    // Тест, когда массив не создан
     tcase_add_test(tc_neg, test_find_no_created_arr);
+    // Тест, когда массив пуст
     tcase_add_test(tc_neg, test_find_free_arr);
+    // Тест, когда элементов не найдено
     tcase_add_test(tc_neg, test_find_no_elem);
 
 
     tc_pos = tcase_create("positive");
+    // Тест, когда олин элемент
     tcase_add_test(tc_pos, test_find_one_elem);
+    // Тест, когда два элемента
     tcase_add_test(tc_pos, test_find_two_elems);
+    // Тест, когда много элеентов и искомый в начале
     tcase_add_test(tc_pos, test_find_more_elems_in_start);
+    // Тест, когда много элеентов и искомый в середине
     tcase_add_test(tc_pos, test_find_more_elems_in_center);
+    // Тест, когда много элеентов и искомый в конце
     tcase_add_test(tc_pos, test_find_more_elems_in_end);
 
     suite_add_tcase(s, tc_neg);

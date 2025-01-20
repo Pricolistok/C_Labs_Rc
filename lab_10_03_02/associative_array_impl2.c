@@ -59,7 +59,6 @@ void insert_to_list(node_t **node, const char *key, int num, assoc_array_error_t
     node_t *next = *node;
     if (*node != NULL)
     {
-
         for (; next->next != NULL; next = next->next)
         {
             if (strcmp(next->key, key) == 0)

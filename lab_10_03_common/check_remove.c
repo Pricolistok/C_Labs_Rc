@@ -180,18 +180,28 @@ Suite* test_remove(void)
      s = suite_create("test remove");
 
     tc_neg = tcase_create("negative");
+    // Тест, когда ключ - нуль
     tcase_add_test(tc_neg, test_remove_null_key);
+    // Тест, когда ключ нулевой длины
     tcase_add_test(tc_neg, test_remove_zero_len_key);
+    // Тест, когда массив не создан
     tcase_add_test(tc_neg, test_remove_no_created_arr);
+    // Тест, когда массив пуст
     tcase_add_test(tc_neg, test_remove_free_arr);
+    // Тест, когда массив пуст
     tcase_add_test(tc_neg, test_remove_not_found);
 
 
     tc_pos = tcase_create("positive");
+    // Тест, когда один элемент
     tcase_add_test(tc_pos, test_remove_one_elem);
+    // Тест, когда два элемента
     tcase_add_test(tc_pos, test_remove_two_elems);
+    // Тест, когда много и искомое в начале
     tcase_add_test(tc_pos, test_remove_more_elems_start);
+    // Тест, когда много и искомое в середине
     tcase_add_test(tc_pos, test_remove_more_elems_center);
+    // Тест, когда много и искомое в конце
     tcase_add_test(tc_pos, test_remove_more_elems_end);
 
     suite_add_tcase(s, tc_neg);
