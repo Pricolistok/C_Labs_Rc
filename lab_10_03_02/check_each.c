@@ -1,1 +1,1 @@
-#include "check_each.h"
+../lab_10_03_common/check_each.c

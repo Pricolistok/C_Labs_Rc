@@ -1,1 +1,1 @@
-#include "check_insert.h"
+../lab_10_03_common/check_insert.c

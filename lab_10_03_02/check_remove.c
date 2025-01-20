@@ -1,1 +1,1 @@
-#include "check_remove.h"
+../lab_10_03_common/check_remove.c

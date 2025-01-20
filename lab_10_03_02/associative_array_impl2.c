@@ -21,7 +21,7 @@ struct assoc_array_type
 
 assoc_array_t assoc_array_create(void)
 {
-    assoc_array_t arr = malloc(sizeof(assoc_array_t));
+    assoc_array_t arr = malloc(sizeof(struct assoc_array_type));
     if (!arr)
         return NULL;
     arr->list = NULL;
@@ -44,32 +44,75 @@ void free_list(node_t *node)
 void assoc_array_destroy(assoc_array_t *arr)
 {
     if (!arr || !*arr)
+    {
+        free(*arr);
         return;
+    }
     free_list((*arr)->list);
+    free(*arr);
     *arr = NULL;
 }
 
 
-void insert_to_list(node_t *node, const char *key, int num, assoc_array_t *error_code)
+void insert_to_list(node_t **node, const char *key, int num, assoc_array_error_t *error_code)
 {
-    for (; node->next != NULL; node = node->next)
+    node_t *next = *node;
+    if (*node != NULL)
     {
-        if (strcmp(node->key, key) == 0)
+
+        for (; next->next != NULL; next = next->next)
+        {
+            if (strcmp(next->key, key) == 0)
+            {
+                *error_code = ASSOC_ARRAY_KEY_EXISTS;
+                return;
+            }
+        }
+        if (strcmp(next->key, key) == 0)
         {
             *error_code = ASSOC_ARRAY_KEY_EXISTS;
             return;
         }
+        next->next = malloc(sizeof(node_t));
+        if (!next->next)
+        {
+            *error_code = ASSOC_ARRAY_MEM;
+            return;
+        }
+
+        next->next->key = malloc(strlen(key) + 1);
+        if (!next->next->key)
+        {
+            free(next->next);
+            *error_code = ASSOC_ARRAY_MEM;
+            return;
+        }
+        strcpy(next->next->key, key);
+        next->next->value = num;
+        next->next->next = NULL;
     }
-    node->next = malloc(sizeof(node_t));
-    if (!node->next)
+    else
     {
-        *error_code = ASSOC_ARRAY_MEM;
-        return;
+        *node = malloc(sizeof(node_t));
+        if (!*node)
+        {
+            *error_code = ASSOC_ARRAY_MEM;
+            return;
+        }
+        (*node)->key = malloc(strlen(key) + 1);
+        if (!(*node)->key)
+        {
+            free(*node);
+            *error_code = ASSOC_ARRAY_MEM;
+            return;
+        }
+
+        strcpy((*node)->key, key);
+        (*node)->value = num;
+        (*node)->next = NULL;
     }
-    strcpy(node->next->key, key);
-    node->next->value = num;
-    node->next->next = NULL;
 }
+
 
 
 assoc_array_error_t assoc_array_insert(assoc_array_t arr, const char *key, int num)
@@ -77,7 +120,7 @@ assoc_array_error_t assoc_array_insert(assoc_array_t arr, const char *key, int n
     assoc_array_error_t error_code = ASSOC_ARRAY_OK;
     if (arr == NULL || key == NULL || strlen(key) == 0)
         return ASSOC_ARRAY_INVALID_PARAM;
-    insert_to_list(arr->list, key, num, &error_code);
+    insert_to_list(&arr->list, key, num, &error_code);
     return error_code;
 }
 
@@ -98,7 +141,7 @@ void find_in_arr(node_t *node, const char *key, int **num, assoc_array_error_t *
 
 assoc_array_error_t assoc_array_find(const assoc_array_t arr, const char *key, int **num)
 {
-    if (arr == NULL || key == NULL || strlen(key) == 0)
+    if (arr == NULL || key == NULL || strlen(key) == 0 || num == NULL)
         return ASSOC_ARRAY_INVALID_PARAM;
 
     assoc_array_error_t error_code = ASSOC_ARRAY_NOT_FOUND;
@@ -107,30 +150,32 @@ assoc_array_error_t assoc_array_find(const assoc_array_t arr, const char *key, i
 }
 
 
-static node_t* find_minimum_elem(node_t *node)
+node_t *remove_node(node_t *node, const char *key, assoc_array_error_t *error_code)
 {
-    while (node && node->next != NULL)
-        node = node->next;
-    return node;
-}
-
-
-void remove_node(node_t *node, const char *key, assoc_array_error_t *error_code)
-{
+    node_t *next = node;
     node_t *tmp = node;
-    for (; node != NULL; node = node->next)
+    if (strcmp(next->key, key) == 0)
     {
-        if (strcmp(node->key, key) == 0)
+        node = node->next;
+        free(next->key);
+        free(next);
+        *error_code = ASSOC_ARRAY_OK;
+        return node;
+    }
+    for (; next != NULL; next = next->next)
+    {
+        if (strcmp(next->key, key) == 0)
         {
-            tmp->next = node->next;
-            free(node->key);
-            free(node);
+            tmp->next = next->next;
+            free(next->key);
+            free(next);
             *error_code = ASSOC_ARRAY_OK;
-            return;
+            return node;
         }
-        tmp = node;
+        tmp = next;
     }
     *error_code = ASSOC_ARRAY_NOT_FOUND;
+    return node;
 }
 
 
@@ -139,8 +184,11 @@ assoc_array_error_t assoc_array_remove(assoc_array_t arr, const char *key)
     if (arr == NULL || key == NULL || strlen(key) == 0)
         return ASSOC_ARRAY_INVALID_PARAM;
 
+    if (arr->list == NULL)
+        return ASSOC_ARRAY_NOT_FOUND;
+
     assoc_array_error_t error = ASSOC_ARRAY_OK;
-    remove_node(arr->list, key, &error);
+    arr->list = remove_node(arr->list, key, &error);
 
     return error;
 }
@@ -182,9 +230,9 @@ int *find_min_node(node_t *node)
     int *saver = &node->value;
     for (; node != NULL; node = node->next)
     {
-        if (strcmp(node->key, maxi) < 0)
+        if (strcmp(node->key, mini) < 0)
         {
-            strcpy(maxi, node->key);
+            mini = node->key;  // Теперь меняем указатель, а не содержимое строки
             saver = &node->value;
         }
     }
@@ -213,7 +261,7 @@ int *find_max_node(node_t *node)
     {
         if (strcmp(node->key, maxi) > 0)
         {
-            strcpy(maxi, node->key);
+            maxi = node->key;
             saver = &node->value;
         }
     }

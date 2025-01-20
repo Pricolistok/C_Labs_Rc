@@ -1,1 +1,1 @@
-#include "check_create.h"
+../lab_10_03_common/check_create.c

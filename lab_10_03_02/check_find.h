@@ -1,4 +1,1 @@
-#ifndef CHECK_FIND_H__
-#define CHECK_FIND_H__
-
-#endif
+../lab_10_03_common/check_find.h

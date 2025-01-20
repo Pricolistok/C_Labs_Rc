@@ -1,4 +1,1 @@
-#ifndef CHECK_EACH_H
-#define CHECK_EACH_H
-
-#endif
+../lab_10_03_common/check_each.h

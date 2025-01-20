@@ -27,7 +27,69 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abf88929-30cd-4131-92a3-7d7df5d2af53" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../lab_10_03_01/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../lab_10_03_01/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab_10_03_01/associative_array_impl1.c" beforeDir="false" afterPath="$PROJECT_DIR$/../lab_10_03_01/associative_array_impl1.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab_10_03_01/check_clear.c" beforeDir="false" afterPath="$PROJECT_DIR$/../lab_10_03_01/check_clear.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab_10_03_01/check_clear.h" beforeDir="false" afterPath="$PROJECT_DIR$/../lab_10_03_01/check_clear.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab_10_03_01/check_create.c" beforeDir="false" afterPath="$PROJECT_DIR$/../lab_10_03_01/check_create.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab_10_03_01/check_create.h" beforeDir="false" afterPath="$PROJECT_DIR$/../lab_10_03_01/check_create.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab_10_03_01/check_destroy.c" beforeDir="false" afterPath="$PROJECT_DIR$/../lab_10_03_01/check_destroy.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab_10_03_01/check_destroy.h" beforeDir="false" afterPath="$PROJECT_DIR$/../lab_10_03_01/check_destroy.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab_10_03_01/check_each.c" beforeDir="false" afterPath="$PROJECT_DIR$/../lab_10_03_01/check_each.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab_10_03_01/check_each.h" beforeDir="false" afterPath="$PROJECT_DIR$/../lab_10_03_01/check_each.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab_10_03_01/check_find.c" beforeDir="false" afterPath="$PROJECT_DIR$/../lab_10_03_01/check_find.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab_10_03_01/check_find.h" beforeDir="false" afterPath="$PROJECT_DIR$/../lab_10_03_01/check_find.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab_10_03_01/check_insert.c" beforeDir="false" afterPath="$PROJECT_DIR$/../lab_10_03_01/check_insert.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab_10_03_01/check_insert.h" beforeDir="false" afterPath="$PROJECT_DIR$/../lab_10_03_01/check_insert.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab_10_03_01/check_main.c" beforeDir="false" afterPath="$PROJECT_DIR$/../lab_10_03_01/check_main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab_10_03_01/check_max.c" beforeDir="false" afterPath="$PROJECT_DIR$/../lab_10_03_01/check_max.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab_10_03_01/check_max.h" beforeDir="false" afterPath="$PROJECT_DIR$/../lab_10_03_01/check_max.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab_10_03_01/check_min.c" beforeDir="false" afterPath="$PROJECT_DIR$/../lab_10_03_01/check_min.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab_10_03_01/check_min.h" beforeDir="false" afterPath="$PROJECT_DIR$/../lab_10_03_01/check_min.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab_10_03_01/check_remove.c" beforeDir="false" afterPath="$PROJECT_DIR$/../lab_10_03_01/check_remove.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab_10_03_01/check_remove.h" beforeDir="false" afterPath="$PROJECT_DIR$/../lab_10_03_01/check_remove.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab_10_03_01/makefile" beforeDir="false" afterPath="$PROJECT_DIR$/../lab_10_03_01/makefile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/associative_array_impl2.c" beforeDir="false" afterPath="$PROJECT_DIR$/associative_array_impl2.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/check_clear.c" beforeDir="false" afterPath="$PROJECT_DIR$/check_clear.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/check_clear.h" beforeDir="false" afterPath="$PROJECT_DIR$/check_clear.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/check_create.c" beforeDir="false" afterPath="$PROJECT_DIR$/check_create.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/check_create.h" beforeDir="false" afterPath="$PROJECT_DIR$/check_create.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/check_destroy.c" beforeDir="false" afterPath="$PROJECT_DIR$/check_destroy.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/check_destroy.h" beforeDir="false" afterPath="$PROJECT_DIR$/check_destroy.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/check_each.c" beforeDir="false" afterPath="$PROJECT_DIR$/check_each.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/check_each.h" beforeDir="false" afterPath="$PROJECT_DIR$/check_each.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/check_find.c" beforeDir="false" afterPath="$PROJECT_DIR$/check_find.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/check_find.h" beforeDir="false" afterPath="$PROJECT_DIR$/check_find.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/check_insert.c" beforeDir="false" afterPath="$PROJECT_DIR$/check_insert.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/check_insert.h" beforeDir="false" afterPath="$PROJECT_DIR$/check_insert.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/check_main.c" beforeDir="false" afterPath="$PROJECT_DIR$/check_main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/check_max.c" beforeDir="false" afterPath="$PROJECT_DIR$/check_max.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/check_max.h" beforeDir="false" afterPath="$PROJECT_DIR$/check_max.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/check_min.c" beforeDir="false" afterPath="$PROJECT_DIR$/check_min.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/check_min.h" beforeDir="false" afterPath="$PROJECT_DIR$/check_min.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/check_remove.c" beforeDir="false" afterPath="$PROJECT_DIR$/check_remove.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/check_remove.h" beforeDir="false" afterPath="$PROJECT_DIR$/check_remove.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/makefile" beforeDir="false" afterPath="$PROJECT_DIR$/makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab_10_03_common/check_clear.c" beforeDir="false" afterPath="$PROJECT_DIR$/../lab_10_03_common/check_clear.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab_10_03_common/check_clear.h" beforeDir="false" afterPath="$PROJECT_DIR$/../lab_10_03_common/check_clear.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab_10_03_common/check_create.c" beforeDir="false" afterPath="$PROJECT_DIR$/../lab_10_03_common/check_create.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab_10_03_common/check_create.h" beforeDir="false" afterPath="$PROJECT_DIR$/../lab_10_03_common/check_create.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab_10_03_common/check_destroy.c" beforeDir="false" afterPath="$PROJECT_DIR$/../lab_10_03_common/check_destroy.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab_10_03_common/check_destroy.h" beforeDir="false" afterPath="$PROJECT_DIR$/../lab_10_03_common/check_destroy.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab_10_03_common/check_each.c" beforeDir="false" afterPath="$PROJECT_DIR$/../lab_10_03_common/check_each.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab_10_03_common/check_each.h" beforeDir="false" afterPath="$PROJECT_DIR$/../lab_10_03_common/check_each.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab_10_03_common/check_find.c" beforeDir="false" afterPath="$PROJECT_DIR$/../lab_10_03_common/check_find.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab_10_03_common/check_find.h" beforeDir="false" afterPath="$PROJECT_DIR$/../lab_10_03_common/check_find.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab_10_03_common/check_insert.c" beforeDir="false" afterPath="$PROJECT_DIR$/../lab_10_03_common/check_insert.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab_10_03_common/check_insert.h" beforeDir="false" afterPath="$PROJECT_DIR$/../lab_10_03_common/check_insert.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab_10_03_common/check_main.c" beforeDir="false" afterPath="$PROJECT_DIR$/../lab_10_03_common/check_main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab_10_03_common/check_max.c" beforeDir="false" afterPath="$PROJECT_DIR$/../lab_10_03_common/check_max.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab_10_03_common/check_max.h" beforeDir="false" afterPath="$PROJECT_DIR$/../lab_10_03_common/check_max.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab_10_03_common/check_min.c" beforeDir="false" afterPath="$PROJECT_DIR$/../lab_10_03_common/check_min.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab_10_03_common/check_min.h" beforeDir="false" afterPath="$PROJECT_DIR$/../lab_10_03_common/check_min.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab_10_03_common/check_remove.c" beforeDir="false" afterPath="$PROJECT_DIR$/../lab_10_03_common/check_remove.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab_10_03_common/check_remove.h" beforeDir="false" afterPath="$PROJECT_DIR$/../lab_10_03_common/check_remove.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,7 +157,7 @@
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "/home/george/Desktop/C_Labs_Rc/lab_10_03_common",
+    "last_opened_file_path": "/home/george/Desktop/C_Labs_Rc/lab_10_03_02",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -105,11 +167,6 @@
   }
 }]]></component>
   <component name="RunManager" selected="Native Application.unit">
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="all" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="lab_10_03_02" TARGET_NAME="all" CONFIG_NAME="all" version="1">
       <method v="2">
         <option name="CLION.COMPOUND.BUILD" enabled="true" />
@@ -140,6 +197,7 @@
       <option name="presentableId" value="Default" />
       <updated>1737310146532</updated>
       <workItem from="1737310147607" duration="4110000" />
+      <workItem from="1737331104682" duration="4882000" />
     </task>
     <servers />
   </component>

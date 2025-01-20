@@ -1,1 +1,1 @@
-#include "check_destroy.h"
+../lab_10_03_common/check_destroy.c

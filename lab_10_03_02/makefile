@@ -2,7 +2,7 @@ CC := gcc
 
 CFLAGS := -std=c99 -Wall -Werror -Wpedantic -Wextra -Wvla -Wfloat-conversion -Wfloat-equal -Iinc
 
-SRCS = associative_array_impl_2.c check_clear.c check_create.c check_destroy.c check_each.c check_find.c check_insert.c check_max.c check_min.c check_remove.c check_main.c
+SRCS = associative_array_impl2.c check_clear.c check_create.c check_destroy.c check_each.c check_find.c check_insert.c check_max.c check_min.c check_remove.c check_main.c
 OBJS = $(SRCS:.c=.o)
 
 EXEFLAGS :=
@@ -34,15 +34,19 @@ ifeq ($(mode), ubsan)
   CC := clang
 endif
 
-all: unit_tests.exe
+all: unit
 
+# -lcheck -lsubunit -lpthread -lrt -lm
 unit_tests.exe: $(OBJS)
-	$(CC) $(CFLAGS) -o $@ $^ $(EXEFLAGS)
+	$(CC) $(CFLAGS) -o $@ $^ $(EXEFLAGS) -lcheck -lsubunit -lpthread -lrt -lm
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
+
+unit: unit_tests.exe
 
 .PHONY : clean unit
 
 clean:
 	$(RM) ./*.exe
+	$(RM) ./*.o

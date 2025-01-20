@@ -1,4 +1,1 @@
-#ifndef CHECK_MIN_H__
-#define CHECK_MIN_H__
-
-#endif
+../lab_10_03_common/check_min.h

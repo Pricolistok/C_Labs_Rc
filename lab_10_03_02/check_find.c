@@ -1,1 +1,1 @@
-#include "check_find.h"
+../lab_10_03_common/check_find.c

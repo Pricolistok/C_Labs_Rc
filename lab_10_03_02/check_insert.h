@@ -1,4 +1,1 @@
-#ifndef CHECK_INSERT_H__
-#define CHECK_INSERT_H__
-
-#endif
+../lab_10_03_common/check_insert.h

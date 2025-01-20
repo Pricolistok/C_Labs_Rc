@@ -1,1 +1,1 @@
-#include "check_clear.h"
+../lab_10_03_common/check_clear.c

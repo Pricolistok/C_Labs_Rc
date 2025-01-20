@@ -1,4 +1,1 @@
-#ifndef CHECK_CREATE_H__
-#define CHECK_CREATE_H__
-
-#endif
+../lab_10_03_common/check_create.h

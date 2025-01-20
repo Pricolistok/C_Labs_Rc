@@ -1,1 +1,1 @@
-#include "check_min.h"
+../lab_10_03_common/check_min.c
